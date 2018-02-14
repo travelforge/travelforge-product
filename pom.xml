@@ -23,7 +23,7 @@
 
     <groupId>org.travelforge.product</groupId>
     <artifactId>travelforge-product</artifactId>
-    <version>0.9.0</version>
+    <version>0.10-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Travelforge Product</name>
@@ -88,6 +88,21 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>external.atlassian.jgitflow</groupId>
+                <artifactId>jgitflow-maven-plugin</artifactId>
+                <version>1.0-m5.1</version>
+                <configuration>
+                    <enableSshAgent>true</enableSshAgent>
+                    <flowInitContext>
+                        <masterBranchName>master</masterBranchName>
+                        <developBranchName>develop</developBranchName>
+                        <featureBranchPrefix>feature/</featureBranchPrefix>
+                        <releaseBranchPrefix>release/</releaseBranchPrefix>
+                        <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
+                    </flowInitContext>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
