@@ -22,6 +22,7 @@ package org.travelforge.product.service;
 /**
  * @author Matthias Deck
  */
+@Deprecated
 public enum PackageRequestParameterName implements PackageRequestParameterMapKey {
 
     PRODUCT_GROUPS,

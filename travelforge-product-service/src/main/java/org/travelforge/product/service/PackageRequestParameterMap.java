@@ -32,6 +32,7 @@ import static org.travelforge.product.service.PackageRequestParameterName.*;
 /**
  * @author Matthias Deck
  */
+@Deprecated
 public class PackageRequestParameterMap extends PackageRequestParameters {
 
     private static final long serialVersionUID = 1L;

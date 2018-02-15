@@ -22,5 +22,6 @@ package org.travelforge.product.service;
 /**
  * @author Matthias Deck
  */
+@Deprecated
 public interface PackageRequestParameterMapKey {
 }

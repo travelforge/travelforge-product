@@ -37,6 +37,7 @@ public class RequestOptions extends LinkedHashMap<String, Object> {
         super(map);
     }
 
+    @Deprecated
     public RequestOptions merge(RequestOptions other) {
 
         Map<String, Object> options = new LinkedHashMap<>();
