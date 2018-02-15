@@ -24,16 +24,16 @@ import java.io.Serializable;
 /**
  * @author Matthias Deck
  */
-public abstract class PackageRequest implements ProductRequest, Serializable {
+public abstract class HotelRequest implements ProductRequest, Serializable {
 
     private Context context;
     private RequestOptions options;
-    private PackageRequestParameters parameters;
+    private HotelRequestParameters parameters;
 
-    PackageRequest() {
+    HotelRequest() {
     }
 
-    PackageRequest(Context context, RequestOptions options, PackageRequestParameters parameters) {
+    HotelRequest(Context context, RequestOptions options, HotelRequestParameters parameters) {
         this.context = context;
         this.options = options;
         this.parameters = parameters;
@@ -58,11 +58,11 @@ public abstract class PackageRequest implements ProductRequest, Serializable {
     }
 
     @Override
-    public PackageRequestParameters getParameters() {
+    public HotelRequestParameters getParameters() {
         return parameters;
     }
 
-    public void setParameters(PackageRequestParameters parameters) {
+    public void setParameters(HotelRequestParameters parameters) {
         this.parameters = parameters;
     }
 
@@ -71,7 +71,7 @@ public abstract class PackageRequest implements ProductRequest, Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        PackageRequest that = (PackageRequest) o;
+        HotelRequest that = (HotelRequest) o;
 
         if (context != null ? !context.equals(that.context) : that.context != null) return false;
         if (options != null ? !options.equals(that.options) : that.options != null) return false;
@@ -88,7 +88,7 @@ public abstract class PackageRequest implements ProductRequest, Serializable {
 
     @Override
     public String toString() {
-        return "PackageRequest{" +
+        return "HotelRequest{" +
                 "context=" + context +
                 ", options=" + options +
                 ", parameters=" + parameters +

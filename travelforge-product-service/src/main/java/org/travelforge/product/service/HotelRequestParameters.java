@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * @author Matthias Deck
  */
-public class PackageRequestParameters implements ProductRequestAttributes, FlightRequestAttributes, HotelRequestAttributes, Serializable {
+public class HotelRequestParameters implements ProductRequestAttributes, HotelRequestAttributes, Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -52,10 +52,6 @@ public class PackageRequestParameters implements ProductRequestAttributes, Fligh
     private LocalTime travelPeriodReturnTimeMin;
     private LocalTime travelPeriodReturnTimeMax;
     private List<Integer> travelPeriodDurations;
-    private List<String> flightDepartureAirportCodes;
-    private List<String> flightArrivalAirportCodes;
-    private List<String> flightAirlineCodes;
-    private Integer flightStopOverMax;
     private List<Integer> hotelCodes;
     private List<String> hotelProductCodes;
     private Float hotelCategory;
@@ -90,10 +86,10 @@ public class PackageRequestParameters implements ProductRequestAttributes, Fligh
     private Float priceMin;
     private Float priceMax;
 
-    public PackageRequestParameters() {
+    public HotelRequestParameters() {
     }
 
-    public PackageRequestParameters(List<Integer> productGroups, List<String> tourOperatorCodes, Integer travellersAdults, List<Integer> travellersChildrenAge, List<LocalDate> travellersChildrenDateOfBirth, LocalDate travelPeriodDepartureDate, Integer travelPeriodDepartureDateOffset, Integer travelPeriodDepartureDatePreOffset, Integer travelPeriodDepartureDatePostOffset, List<DayOfWeek> travelPeriodDepartureDays, LocalTime travelPeriodDepartureTimeMin, LocalTime travelPeriodDepartureTimeMax, LocalDate travelPeriodReturnDate, Integer travelPeriodReturnDateOffset, Integer travelPeriodReturnDatePreOffset, Integer travelPeriodReturnDatePostOffset, List<DayOfWeek> travelPeriodReturnDays, LocalTime travelPeriodReturnTimeMin, LocalTime travelPeriodReturnTimeMax, List<Integer> travelPeriodDurations, List<String> flightDepartureAirportCodes, List<String> flightArrivalAirportCodes, List<String> flightAirlineCodes, Integer flightStopOverMax, List<Integer> hotelCodes, List<String> hotelProductCodes, Float hotelCategory, List<String> hotelLocationCountryCodes, List<Integer> hotelLocationRegionCodes, List<Integer> hotelLocationCityCodes, List<String> hotelAttributes, Integer hotelRatingCount, Float hotelRatingOverAll, Float hotelRatingTotal, Float hotelRatingHotel, Float hotelRatingLocation, Float hotelRatingService, Float hotelRatingCatering, Float hotelRatingSport, Float hotelRatingRoom, Float hotelRecommendationsTotal, Float hotelRecommendationsSingle, Float hotelRecommendationsFamily, Float hotelRecommendationsCouples, Float hotelRecommendationsFriends, Float hotelRecommendationsBeachHoliday, Float hotelRecommendationsBusinessTrip, Float hotelRecommendationsCityBreak, Float hotelRecommendationsWellness, List<String> hotelRoomCodes, List<String> hotelRoomBookingCodes, List<String> hotelRoomViewCodes, List<String> hotelRoomAttributes, List<String> hotelBoardCodes, List<String> extras, Float priceMin, Float priceMax) {
+    public HotelRequestParameters(List<Integer> productGroups, List<String> tourOperatorCodes, Integer travellersAdults, List<Integer> travellersChildrenAge, List<LocalDate> travellersChildrenDateOfBirth, LocalDate travelPeriodDepartureDate, Integer travelPeriodDepartureDateOffset, Integer travelPeriodDepartureDatePreOffset, Integer travelPeriodDepartureDatePostOffset, List<DayOfWeek> travelPeriodDepartureDays, LocalTime travelPeriodDepartureTimeMin, LocalTime travelPeriodDepartureTimeMax, LocalDate travelPeriodReturnDate, Integer travelPeriodReturnDateOffset, Integer travelPeriodReturnDatePreOffset, Integer travelPeriodReturnDatePostOffset, List<DayOfWeek> travelPeriodReturnDays, LocalTime travelPeriodReturnTimeMin, LocalTime travelPeriodReturnTimeMax, List<Integer> travelPeriodDurations, List<Integer> hotelCodes, List<String> hotelProductCodes, Float hotelCategory, List<String> hotelLocationCountryCodes, List<Integer> hotelLocationRegionCodes, List<Integer> hotelLocationCityCodes, List<String> hotelAttributes, Integer hotelRatingCount, Float hotelRatingOverAll, Float hotelRatingTotal, Float hotelRatingHotel, Float hotelRatingLocation, Float hotelRatingService, Float hotelRatingCatering, Float hotelRatingSport, Float hotelRatingRoom, Float hotelRecommendationsTotal, Float hotelRecommendationsSingle, Float hotelRecommendationsFamily, Float hotelRecommendationsCouples, Float hotelRecommendationsFriends, Float hotelRecommendationsBeachHoliday, Float hotelRecommendationsBusinessTrip, Float hotelRecommendationsCityBreak, Float hotelRecommendationsWellness, List<String> hotelRoomCodes, List<String> hotelRoomBookingCodes, List<String> hotelRoomViewCodes, List<String> hotelRoomAttributes, List<String> hotelBoardCodes, List<String> extras, Float priceMin, Float priceMax) {
         this.productGroups = productGroups;
         this.tourOperatorCodes = tourOperatorCodes;
         this.travellersAdults = travellersAdults;
@@ -114,10 +110,6 @@ public class PackageRequestParameters implements ProductRequestAttributes, Fligh
         this.travelPeriodReturnTimeMin = travelPeriodReturnTimeMin;
         this.travelPeriodReturnTimeMax = travelPeriodReturnTimeMax;
         this.travelPeriodDurations = travelPeriodDurations;
-        this.flightDepartureAirportCodes = flightDepartureAirportCodes;
-        this.flightArrivalAirportCodes = flightArrivalAirportCodes;
-        this.flightAirlineCodes = flightAirlineCodes;
-        this.flightStopOverMax = flightStopOverMax;
         this.hotelCodes = hotelCodes;
         this.hotelProductCodes = hotelProductCodes;
         this.hotelCategory = hotelCategory;
@@ -331,42 +323,6 @@ public class PackageRequestParameters implements ProductRequestAttributes, Fligh
 
     public void setTravelPeriodDurations(List<Integer> travelPeriodDurations) {
         this.travelPeriodDurations = travelPeriodDurations;
-    }
-
-    @Override
-    public List<String> getFlightDepartureAirportCodes() {
-        return flightDepartureAirportCodes;
-    }
-
-    public void setFlightDepartureAirportCodes(List<String> flightDepartureAirportCodes) {
-        this.flightDepartureAirportCodes = flightDepartureAirportCodes;
-    }
-
-    @Override
-    public List<String> getFlightArrivalAirportCodes() {
-        return flightArrivalAirportCodes;
-    }
-
-    public void setFlightArrivalAirportCodes(List<String> flightArrivalAirportCodes) {
-        this.flightArrivalAirportCodes = flightArrivalAirportCodes;
-    }
-
-    @Override
-    public List<String> getFlightAirlineCodes() {
-        return flightAirlineCodes;
-    }
-
-    public void setFlightAirlineCodes(List<String> flightAirlineCodes) {
-        this.flightAirlineCodes = flightAirlineCodes;
-    }
-
-    @Override
-    public Integer getFlightStopOverMax() {
-        return flightStopOverMax;
-    }
-
-    public void setFlightStopOverMax(Integer flightStopOverMax) {
-        this.flightStopOverMax = flightStopOverMax;
     }
 
     @Override
@@ -671,7 +627,7 @@ public class PackageRequestParameters implements ProductRequestAttributes, Fligh
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        PackageRequestParameters that = (PackageRequestParameters) o;
+        HotelRequestParameters that = (HotelRequestParameters) o;
 
         if (productGroups != null ? !productGroups.equals(that.productGroups) : that.productGroups != null)
             return false;
@@ -712,14 +668,6 @@ public class PackageRequestParameters implements ProductRequestAttributes, Fligh
         if (travelPeriodReturnTimeMax != null ? !travelPeriodReturnTimeMax.equals(that.travelPeriodReturnTimeMax) : that.travelPeriodReturnTimeMax != null)
             return false;
         if (travelPeriodDurations != null ? !travelPeriodDurations.equals(that.travelPeriodDurations) : that.travelPeriodDurations != null)
-            return false;
-        if (flightDepartureAirportCodes != null ? !flightDepartureAirportCodes.equals(that.flightDepartureAirportCodes) : that.flightDepartureAirportCodes != null)
-            return false;
-        if (flightArrivalAirportCodes != null ? !flightArrivalAirportCodes.equals(that.flightArrivalAirportCodes) : that.flightArrivalAirportCodes != null)
-            return false;
-        if (flightAirlineCodes != null ? !flightAirlineCodes.equals(that.flightAirlineCodes) : that.flightAirlineCodes != null)
-            return false;
-        if (flightStopOverMax != null ? !flightStopOverMax.equals(that.flightStopOverMax) : that.flightStopOverMax != null)
             return false;
         if (hotelCodes != null ? !hotelCodes.equals(that.hotelCodes) : that.hotelCodes != null) return false;
         if (hotelProductCodes != null ? !hotelProductCodes.equals(that.hotelProductCodes) : that.hotelProductCodes != null)
@@ -807,10 +755,6 @@ public class PackageRequestParameters implements ProductRequestAttributes, Fligh
         result = 31 * result + (travelPeriodReturnTimeMin != null ? travelPeriodReturnTimeMin.hashCode() : 0);
         result = 31 * result + (travelPeriodReturnTimeMax != null ? travelPeriodReturnTimeMax.hashCode() : 0);
         result = 31 * result + (travelPeriodDurations != null ? travelPeriodDurations.hashCode() : 0);
-        result = 31 * result + (flightDepartureAirportCodes != null ? flightDepartureAirportCodes.hashCode() : 0);
-        result = 31 * result + (flightArrivalAirportCodes != null ? flightArrivalAirportCodes.hashCode() : 0);
-        result = 31 * result + (flightAirlineCodes != null ? flightAirlineCodes.hashCode() : 0);
-        result = 31 * result + (flightStopOverMax != null ? flightStopOverMax.hashCode() : 0);
         result = 31 * result + (hotelCodes != null ? hotelCodes.hashCode() : 0);
         result = 31 * result + (hotelProductCodes != null ? hotelProductCodes.hashCode() : 0);
         result = 31 * result + (hotelCategory != null ? hotelCategory.hashCode() : 0);
@@ -849,7 +793,7 @@ public class PackageRequestParameters implements ProductRequestAttributes, Fligh
 
     @Override
     public String toString() {
-        return "PackageRequestParameters{" +
+        return "HotelRequestParameters{" +
                 "productGroups=" + productGroups +
                 ", tourOperatorCodes=" + tourOperatorCodes +
                 ", travellersAdults=" + travellersAdults +
@@ -870,10 +814,6 @@ public class PackageRequestParameters implements ProductRequestAttributes, Fligh
                 ", travelPeriodReturnTimeMin=" + travelPeriodReturnTimeMin +
                 ", travelPeriodReturnTimeMax=" + travelPeriodReturnTimeMax +
                 ", travelPeriodDurations=" + travelPeriodDurations +
-                ", flightDepartureAirportCodes=" + flightDepartureAirportCodes +
-                ", flightArrivalAirportCodes=" + flightArrivalAirportCodes +
-                ", flightAirlineCodes=" + flightAirlineCodes +
-                ", flightStopOverMax=" + flightStopOverMax +
                 ", hotelCodes=" + hotelCodes +
                 ", hotelProductCodes=" + hotelProductCodes +
                 ", hotelCategory=" + hotelCategory +
