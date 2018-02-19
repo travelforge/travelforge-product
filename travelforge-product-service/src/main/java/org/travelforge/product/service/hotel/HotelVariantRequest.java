@@ -17,18 +17,26 @@
  *  limitations under the License.
  */
 
-package org.travelforge.product.service;
+package org.travelforge.product.service.hotel;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import org.travelforge.product.service.Pageable;
+import org.travelforge.product.service.Pagination;
+import org.travelforge.product.service.ProductRequest;
+
+import java.util.List;
 
 /**
  * @author Matthias Deck
  */
-public interface HotelProductServiceConnector {
+@Data
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class HotelVariantRequest extends ProductRequest<HotelProductRequestParameters> implements Pageable {
 
-    HotelGroupResponse executeHotelGroupRequest(HotelGroupRequest request) throws ProductServiceException;
+    private List<String> variants;
+    private Pagination pagination;
 
-    HotelProductResponse executeHotelProductRequest(HotelProductRequest request) throws ProductServiceException;
-
-    HotelProductResponse executeHotelOfferRequest(HotelOfferRequest request) throws ProductServiceException;
-
-    HotelProductResponse executeHotelVariantRequest(HotelVariantRequest request) throws ProductServiceException;
 }

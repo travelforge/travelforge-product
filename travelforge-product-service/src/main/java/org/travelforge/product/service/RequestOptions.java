@@ -19,6 +19,10 @@
 
 package org.travelforge.product.service;
 
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -26,18 +30,17 @@ import java.util.Objects;
 /**
  * @author Matthias Deck
  */
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public class RequestOptions extends LinkedHashMap<String, Object> {
 
     private static final long serialVersionUID = 1L;
 
-    public RequestOptions() {
+    public RequestOptions(Map<? extends String, ?> m) {
+        super(m);
     }
 
-    public RequestOptions(Map<? extends String, ?> map) {
-        super(map);
-    }
-
-    @Deprecated
     public RequestOptions merge(RequestOptions other) {
 
         Map<String, Object> options = new LinkedHashMap<>();
@@ -45,10 +48,5 @@ public class RequestOptions extends LinkedHashMap<String, Object> {
         options.putAll(other);
         options.values().removeIf(Objects::isNull);
         return new RequestOptions(options);
-    }
-
-    @Override
-    public String toString() {
-        return "RequestOptions" + super.toString();
     }
 }

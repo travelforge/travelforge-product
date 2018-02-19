@@ -17,20 +17,24 @@
  *  limitations under the License.
  */
 
-package org.travelforge.product.service;
+package org.travelforge.product.service.packages;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import org.travelforge.product.model.PackageProductGroup;
+import org.travelforge.product.service.ProductResponse;
 
 import java.util.List;
 
 /**
  * @author Matthias Deck
  */
-public interface FlightRequestAttributes {
+@Data
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class PackageGroupResponse extends ProductResponse {
 
-    List<String> getFlightDepartureAirportCodes();
+    private List<PackageProductGroup> productGroups;
 
-    List<String> getFlightArrivalAirportCodes();
-
-    List<String> getFlightAirlineCodes();
-
-    Integer getFlightStopOverMax();
 }

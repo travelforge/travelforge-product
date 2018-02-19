@@ -17,20 +17,24 @@
  *  limitations under the License.
  */
 
-package org.travelforge.product.service;
+package org.travelforge.product.service.hotel;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import org.travelforge.product.model.HotelProductGroup;
+import org.travelforge.product.service.ProductResponse;
+
+import java.util.List;
 
 /**
  * @author Matthias Deck
  */
-public interface PackageProductServiceConnector {
+@Data
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class HotelGroupResponse extends ProductResponse {
 
-    PackageGroupResponse executePackageGroupRequest(PackageGroupRequest request) throws ProductServiceException;
+    private List<HotelProductGroup> productGroups;
 
-    PackageProductResponse executePackageProductRequest(PackageProductRequest request) throws ProductServiceException;
-
-    PackageProductResponse executePackageOfferRequest(PackageOfferRequest request) throws ProductServiceException;
-
-    PackageProductResponse executePackageVariantRequest(PackageVariantRequest request) throws ProductServiceException;
-
-    PackageProductResponse executePackageFlightAlternativeRequest(PackageFlightAlternativeRequest request) throws ProductServiceException;
 }

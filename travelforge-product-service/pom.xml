@@ -41,6 +41,12 @@
             <groupId>org.travelforge.product</groupId>
             <artifactId>travelforge-product-model</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
 </project>

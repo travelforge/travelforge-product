@@ -17,17 +17,23 @@
  *  limitations under the License.
  */
 
-package org.travelforge.product.service;
+package org.travelforge.product.service.packages;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import org.travelforge.product.service.Pageable;
+import org.travelforge.product.service.Pagination;
+import org.travelforge.product.service.ProductRequest;
 
 /**
  * @author Matthias Deck
  */
-public class HotelProductServiceFactory {
+@Data
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class PackageFlightAlternativeRequest extends ProductRequest<PackageProductRequestParameters> implements Pageable {
 
-    private HotelProductServiceFactory() {
-    }
+    private Pagination pagination;
 
-    public static HotelProductService newInstance(HotelProductServiceConnector connector) {
-        return new HotelProductServiceImpl(connector);
-    }
 }

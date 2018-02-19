@@ -17,28 +17,24 @@
  *  limitations under the License.
  */
 
-package org.travelforge.product.service;
+package org.travelforge.product.service.hotel;
+
+import org.travelforge.product.service.ProductServiceException;
 
 /**
  * @author Matthias Deck
  */
-public class HotelGroupRequest extends HotelRequest {
+public interface HotelProductService {
 
-    private static final long serialVersionUID = 1L;
+    HotelGroupResponse getHotelGroups(HotelGroupRequest request) throws ProductServiceException;
 
-    public HotelGroupRequest() {
-    }
+    HotelProductResponse getHotelProducts(HotelProductRequest request) throws ProductServiceException;
 
-    public HotelGroupRequest(Context context, RequestOptions options, HotelRequestParameters parameters) {
-        super(context, options, parameters);
-    }
+    HotelProductResponse getHotelOffers(HotelOfferRequest request) throws ProductServiceException;
 
-    @Override
-    public String toString() {
-        return "HotelGroupRequest{" +
-                "context=" + getContext() +
-                ", options=" + getOptions() +
-                ", parameters=" + getParameters() +
-                '}';
+    HotelProductResponse getHotelVariants(HotelVariantRequest request) throws ProductServiceException;
+
+    static HotelProductService newInstance(HotelProductServiceConnector connector) {
+        return new HotelProductServiceImpl(connector);
     }
 }

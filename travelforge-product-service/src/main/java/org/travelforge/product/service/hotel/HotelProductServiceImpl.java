@@ -17,7 +17,9 @@
  *  limitations under the License.
  */
 
-package org.travelforge.product.service;
+package org.travelforge.product.service.hotel;
+
+import org.travelforge.product.service.ProductServiceException;
 
 /**
  * @author Matthias Deck

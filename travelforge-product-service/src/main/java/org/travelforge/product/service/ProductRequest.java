@@ -19,14 +19,22 @@
 
 package org.travelforge.product.service;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+import java.io.Serializable;
+
 /**
  * @author Matthias Deck
  */
-public interface ProductRequest {
+@Data
+@EqualsAndHashCode
+@ToString
+public abstract class ProductRequest<T extends ProductRequestParameters> implements Serializable {
 
-    Context getContext();
+    private Context context;
+    private RequestOptions options;
+    private T parameters;
 
-    RequestOptions getOptions();
-
-    ProductRequestAttributes getParameters();
 }

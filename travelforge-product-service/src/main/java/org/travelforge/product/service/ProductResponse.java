@@ -31,10 +31,8 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode
 @ToString
-public class PageInfo implements Serializable {
+public abstract class ProductResponse implements Serializable {
 
-    private Integer resultsFrom;
-    private Integer resultsPerPage;
-    private Integer resultsTotal;
+    private Context context;
 
 }

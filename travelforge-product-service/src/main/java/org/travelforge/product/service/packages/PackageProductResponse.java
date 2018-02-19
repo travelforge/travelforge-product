@@ -17,24 +17,26 @@
  *  limitations under the License.
  */
 
-package org.travelforge.product.service;
+package org.travelforge.product.service.packages;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.travelforge.product.model.PackageProduct;
+import org.travelforge.product.service.PageInfo;
+import org.travelforge.product.service.ProductResponse;
 
-import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author Matthias Deck
  */
 @Data
-@EqualsAndHashCode
-@ToString
-public class PageInfo implements Serializable {
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class PackageProductResponse extends ProductResponse {
 
-    private Integer resultsFrom;
-    private Integer resultsPerPage;
-    private Integer resultsTotal;
+    private PageInfo pageInfo;
+    private List<PackageProduct> products;
 
 }

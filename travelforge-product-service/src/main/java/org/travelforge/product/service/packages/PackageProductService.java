@@ -17,7 +17,9 @@
  *  limitations under the License.
  */
 
-package org.travelforge.product.service;
+package org.travelforge.product.service.packages;
+
+import org.travelforge.product.service.ProductServiceException;
 
 /**
  * @author Matthias Deck
@@ -33,4 +35,8 @@ public interface PackageProductService {
     PackageProductResponse getPackageVariants(PackageVariantRequest request) throws ProductServiceException;
 
     PackageProductResponse getPackageFlightAlternatives(PackageFlightAlternativeRequest request) throws ProductServiceException;
+
+    static PackageProductService newInstance(PackageProductServiceConnector connector) {
+        return new PackageProductServiceImpl(connector);
+    }
 }

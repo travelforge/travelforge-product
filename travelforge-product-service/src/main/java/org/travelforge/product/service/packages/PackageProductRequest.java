@@ -17,28 +17,23 @@
  *  limitations under the License.
  */
 
-package org.travelforge.product.service;
+package org.travelforge.product.service.packages;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import org.travelforge.product.service.Pageable;
+import org.travelforge.product.service.Pagination;
+import org.travelforge.product.service.ProductRequest;
 
 /**
  * @author Matthias Deck
  */
-public class PackageGroupRequest extends PackageRequest {
+@Data
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class PackageProductRequest extends ProductRequest<PackageProductRequestParameters> implements Pageable {
 
-    private static final long serialVersionUID = 1L;
+    private Pagination pagination;
 
-    public PackageGroupRequest() {
-    }
-
-    public PackageGroupRequest(Context context, RequestOptions options, PackageRequestParameters parameters) {
-        super(context, options, parameters);
-    }
-
-    @Override
-    public String toString() {
-        return "PackageGroupRequest{" +
-                "context=" + getContext() +
-                ", options=" + getOptions() +
-                ", parameters=" + getParameters() +
-                '}';
-    }
 }

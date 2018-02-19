@@ -17,24 +17,20 @@
  *  limitations under the License.
  */
 
-package org.travelforge.product.service;
+package org.travelforge.product.service.hotel;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-
-import java.io.Serializable;
+import org.travelforge.product.service.ProductServiceException;
 
 /**
  * @author Matthias Deck
  */
-@Data
-@EqualsAndHashCode
-@ToString
-public class PageInfo implements Serializable {
+public interface HotelProductServiceConnector {
 
-    private Integer resultsFrom;
-    private Integer resultsPerPage;
-    private Integer resultsTotal;
+    HotelGroupResponse executeHotelGroupRequest(HotelGroupRequest request) throws ProductServiceException;
 
+    HotelProductResponse executeHotelProductRequest(HotelProductRequest request) throws ProductServiceException;
+
+    HotelProductResponse executeHotelOfferRequest(HotelOfferRequest request) throws ProductServiceException;
+
+    HotelProductResponse executeHotelVariantRequest(HotelVariantRequest request) throws ProductServiceException;
 }

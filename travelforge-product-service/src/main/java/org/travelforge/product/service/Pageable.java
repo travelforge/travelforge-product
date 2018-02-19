@@ -19,11 +19,13 @@
 
 package org.travelforge.product.service;
 
+import java.io.Serializable;
+
 /**
  * @author Matthias Deck
  */
 
-public interface Pageable {
+public interface Pageable extends Serializable {
 
     Pagination getPagination();
 

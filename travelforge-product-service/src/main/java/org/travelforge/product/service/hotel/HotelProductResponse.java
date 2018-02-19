@@ -17,17 +17,26 @@
  *  limitations under the License.
  */
 
-package org.travelforge.product.service;
+package org.travelforge.product.service.hotel;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import org.travelforge.product.model.HotelProduct;
+import org.travelforge.product.service.PageInfo;
+import org.travelforge.product.service.ProductResponse;
+
+import java.util.List;
 
 /**
  * @author Matthias Deck
  */
-public class PackageProductServiceFactory {
+@Data
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class HotelProductResponse extends ProductResponse {
 
-    private PackageProductServiceFactory() {
-    }
+    private PageInfo pageInfo;
+    private List<HotelProduct> products;
 
-    public static PackageProductService newInstance(PackageProductServiceConnector connector) {
-        return new PackageProductServiceImpl(connector);
-    }
 }
