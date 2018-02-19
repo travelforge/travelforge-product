@@ -24,7 +24,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.travelforge.product.service.Pageable;
 import org.travelforge.product.service.Pagination;
-import org.travelforge.product.service.ProductRequest;
 
 import java.util.List;
 
@@ -34,7 +33,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class HotelVariantRequest extends ProductRequest<HotelProductRequestParameters> implements Pageable {
+public class HotelVariantRequest extends HotelRequest implements Pageable {
 
     private List<String> variants;
     private Pagination pagination;

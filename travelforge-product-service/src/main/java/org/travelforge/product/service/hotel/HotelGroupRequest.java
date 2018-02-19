@@ -22,7 +22,6 @@ package org.travelforge.product.service.hotel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.travelforge.product.service.ProductRequest;
 
 /**
  * @author Matthias Deck
@@ -30,6 +29,6 @@ import org.travelforge.product.service.ProductRequest;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class HotelGroupRequest extends ProductRequest<HotelProductRequestParameters> {
+public class HotelGroupRequest extends HotelRequest {
 
 }

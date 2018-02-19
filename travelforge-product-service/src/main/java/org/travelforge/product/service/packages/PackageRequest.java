@@ -22,8 +22,7 @@ package org.travelforge.product.service.packages;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.travelforge.product.service.Pageable;
-import org.travelforge.product.service.Pagination;
+import org.travelforge.product.service.ProductRequest;
 
 /**
  * @author Matthias Deck
@@ -31,8 +30,7 @@ import org.travelforge.product.service.Pagination;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class PackageFlightAlternativeRequest extends PackageRequest implements Pageable {
+public abstract class PackageRequest extends ProductRequest<PackageProductRequestParameters> {
 
-    private Pagination pagination;
 
 }

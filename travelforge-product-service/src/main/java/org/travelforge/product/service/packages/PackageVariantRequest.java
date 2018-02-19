@@ -24,7 +24,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.travelforge.product.service.Pageable;
 import org.travelforge.product.service.Pagination;
-import org.travelforge.product.service.ProductRequest;
 
 import java.util.List;
 
@@ -34,7 +33,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class PackageVariantRequest extends ProductRequest<PackageProductRequestParameters> implements Pageable {
+public class PackageVariantRequest extends PackageRequest implements Pageable {
 
     private static final long serialVersionUID = 1L;
 
