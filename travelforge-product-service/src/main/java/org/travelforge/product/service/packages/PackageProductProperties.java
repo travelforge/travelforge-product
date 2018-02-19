@@ -22,9 +22,9 @@ package org.travelforge.product.service.packages;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.travelforge.product.service.FlightRequestParameters;
-import org.travelforge.product.service.HotelRequestParameters;
-import org.travelforge.product.service.ProductRequestParameters;
+import org.travelforge.product.service.FlightProperties;
+import org.travelforge.product.service.HotelProperties;
+import org.travelforge.product.service.ProductProperties;
 
 import java.io.Serializable;
 import java.time.DayOfWeek;
@@ -38,7 +38,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode
 @ToString
-public class PackageProductRequestParameters implements ProductRequestParameters, FlightRequestParameters, HotelRequestParameters, Serializable {
+public class PackageProductProperties implements ProductProperties, FlightProperties, HotelProperties, Serializable {
 
     private List<Integer> productGroups;
     private List<String> tourOperatorCodes;
@@ -98,16 +98,15 @@ public class PackageProductRequestParameters implements ProductRequestParameters
     private Float priceMin;
     private Float priceMax;
 
-    public PackageProductRequestParameters merge(PackageProductRequestParameters other) {
+    public PackageProductProperties merge(PackageProductProperties other) {
 
-        PackageProductRequestParameters parameters
-                = new PackageProductRequestParameters();
+        PackageProductProperties properties = new PackageProductProperties();
 
-        ProductRequestParameters.merge(parameters, other);
-        FlightRequestParameters.merge(parameters, other);
-        HotelRequestParameters.merge(parameters, other);
+        ProductProperties.merge(properties, other);
+        FlightProperties.merge(properties, other);
+        HotelProperties.merge(properties, other);
 
-        return parameters;
+        return properties;
     }
 }
 

@@ -22,8 +22,8 @@ package org.travelforge.product.service.hotel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.travelforge.product.service.HotelRequestParameters;
-import org.travelforge.product.service.ProductRequestParameters;
+import org.travelforge.product.service.HotelProperties;
+import org.travelforge.product.service.ProductProperties;
 
 import java.io.Serializable;
 import java.time.DayOfWeek;
@@ -37,7 +37,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode
 @ToString
-public class HotelProductRequestParameters implements ProductRequestParameters, HotelRequestParameters, Serializable {
+public class HotelProductProperties implements ProductProperties, HotelProperties, Serializable {
 
     private List<Integer> productGroups;
     private List<String> tourOperatorCodes;
@@ -93,15 +93,14 @@ public class HotelProductRequestParameters implements ProductRequestParameters, 
     private Float priceMin;
     private Float priceMax;
 
-    public HotelProductRequestParameters merge(HotelProductRequestParameters other) {
+    public HotelProductProperties merge(HotelProductProperties other) {
 
-        HotelProductRequestParameters parameters
-                = new HotelProductRequestParameters();
+        HotelProductProperties properties = new HotelProductProperties();
 
-        ProductRequestParameters.merge(parameters, other);
-        HotelRequestParameters.merge(parameters, other);
+        ProductProperties.merge(properties, other);
+        HotelProperties.merge(properties, other);
 
-        return parameters;
+        return properties;
     }
 }
 

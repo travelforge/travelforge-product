@@ -31,10 +31,10 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode
 @ToString
-public abstract class ProductRequest<T extends ProductRequestParameters> implements Serializable {
+public abstract class ProductRequest<T extends ProductProperties> implements Serializable {
 
     private Context context;
-    private RequestOptions options;
-    private T parameters;
+    private Options options;
+    private T properties;
 
 }

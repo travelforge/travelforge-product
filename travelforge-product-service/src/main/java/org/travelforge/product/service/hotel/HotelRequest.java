@@ -30,6 +30,6 @@ import org.travelforge.product.service.ProductRequest;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class HotelRequest extends ProductRequest<HotelProductRequestParameters> {
+public class HotelRequest extends ProductRequest<HotelProductProperties> {
 
 }

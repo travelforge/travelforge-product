@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * @author Matthias Deck
  */
-public interface FlightRequestParameters extends Serializable {
+public interface FlightProperties extends Serializable {
 
     List<String> getFlightDepartureAirportCodes();
 
@@ -44,9 +44,9 @@ public interface FlightRequestParameters extends Serializable {
 
     void setFlightStopOverMax(Integer flightStopOverMax);
 
-    static void merge(FlightRequestParameters target, FlightRequestParameters... sources) {
+    static void merge(FlightProperties target, FlightProperties... sources) {
 
-        for (FlightRequestParameters source : sources) {
+        for (FlightProperties source : sources) {
 
             // FLIGHT_DEPARTURE_AIRPORT_CODES
             if (source.getFlightDepartureAirportCodes() != null) {

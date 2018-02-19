@@ -30,7 +30,7 @@ import org.travelforge.product.service.ProductRequest;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public abstract class PackageRequest extends ProductRequest<PackageProductRequestParameters> {
+public abstract class PackageRequest extends ProductRequest<PackageProductProperties> {
 
 
 }

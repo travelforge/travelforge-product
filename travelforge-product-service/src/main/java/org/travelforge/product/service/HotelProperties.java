@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * @author Matthias Deck
  */
-public interface HotelRequestParameters extends Serializable {
+public interface HotelProperties extends Serializable {
 
     List<Integer> getHotelCodes();
 
@@ -148,9 +148,9 @@ public interface HotelRequestParameters extends Serializable {
 
     void setHotelBoardCodes(List<String> hotelBoardCodes);
 
-    static void merge(HotelRequestParameters target, HotelRequestParameters... sources) {
+    static void merge(HotelProperties target, HotelProperties... sources) {
 
-        for (HotelRequestParameters source : sources) {
+        for (HotelProperties source : sources) {
 
             // HOTEL_CODES
             if (source.getHotelCodes() != null) {

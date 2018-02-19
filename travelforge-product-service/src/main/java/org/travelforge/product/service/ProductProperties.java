@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * @author Matthias Deck
  */
-public interface ProductRequestParameters {
+public interface ProductProperties {
 
     List<Integer> getProductGroups();
 
@@ -122,9 +122,9 @@ public interface ProductRequestParameters {
 
     void setPriceMax(Float priceMax);
 
-    static void merge(ProductRequestParameters target, ProductRequestParameters... sources) {
+    static void merge(ProductProperties target, ProductProperties... sources) {
 
-        for (ProductRequestParameters source : sources) {
+        for (ProductProperties source : sources) {
 
             // PRODUCT_GROUPS
             if (source.getProductGroups() != null) {
