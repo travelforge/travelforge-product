@@ -34,7 +34,7 @@ import java.io.Serializable;
 public abstract class ProductRequest<T extends ProductProperties> implements Serializable {
 
     private Context context;
-    private Options options;
+    private ProductRequestOptions options;
     private T properties;
 
 }

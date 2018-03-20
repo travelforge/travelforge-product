@@ -33,20 +33,20 @@ import java.util.Objects;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class Options extends LinkedHashMap<String, Object> {
+public class ProductRequestOptions extends LinkedHashMap<String, Object> {
 
     private static final long serialVersionUID = 1L;
 
-    public Options(Map<? extends String, ?> m) {
+    public ProductRequestOptions(Map<? extends String, ?> m) {
         super(m);
     }
 
-    public Options merge(Options other) {
+    public ProductRequestOptions merge(ProductRequestOptions other) {
 
         Map<String, Object> options = new LinkedHashMap<>();
         options.putAll(this);
         options.putAll(other);
         options.values().removeIf(Objects::isNull);
-        return new Options(options);
+        return new ProductRequestOptions(options);
     }
 }
