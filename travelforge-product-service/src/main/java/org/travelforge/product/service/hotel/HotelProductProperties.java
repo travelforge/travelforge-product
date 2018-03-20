@@ -97,8 +97,8 @@ public class HotelProductProperties implements ProductProperties, HotelPropertie
 
         HotelProductProperties properties = new HotelProductProperties();
 
-        ProductProperties.merge(properties, other);
-        HotelProperties.merge(properties, other);
+        ProductProperties.merge(properties, this, other);
+        HotelProperties.merge(properties, this, other);
 
         return properties;
     }

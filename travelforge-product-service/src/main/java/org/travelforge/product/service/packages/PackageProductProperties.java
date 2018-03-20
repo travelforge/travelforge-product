@@ -102,9 +102,9 @@ public class PackageProductProperties implements ProductProperties, FlightProper
 
         PackageProductProperties properties = new PackageProductProperties();
 
-        ProductProperties.merge(properties, other);
-        FlightProperties.merge(properties, other);
-        HotelProperties.merge(properties, other);
+        ProductProperties.merge(properties, this, other);
+        FlightProperties.merge(properties, this, other);
+        HotelProperties.merge(properties, this, other);
 
         return properties;
     }
