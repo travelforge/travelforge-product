@@ -25,7 +25,7 @@ import java.util.*;
 /**
  * @author Matthias Deck
  */
-public class HotelProduct implements Serializable {
+public class HotelProduct implements HotelComponent, Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -88,7 +88,8 @@ public class HotelProduct implements Serializable {
     public void setTravelPeriod(TravelPeriod travelPeriod) {
         this.travelPeriod = travelPeriod;
     }
-    
+
+    @Override
     public Hotel getHotel() {
         return hotel;
     }

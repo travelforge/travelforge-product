@@ -25,7 +25,7 @@ import java.util.*;
 /**
  * @author Matthias Deck
  */
-public class PackageProduct implements Serializable {
+public class PackageProduct implements FlightComponent, HotelComponent, Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -91,6 +91,7 @@ public class PackageProduct implements Serializable {
         this.travelPeriod = travelPeriod;
     }
 
+    @Override
     public Flight getFlight() {
         return flight;
     }
@@ -99,6 +100,7 @@ public class PackageProduct implements Serializable {
         this.flight = flight;
     }
 
+    @Override
     public Hotel getHotel() {
         return hotel;
     }
