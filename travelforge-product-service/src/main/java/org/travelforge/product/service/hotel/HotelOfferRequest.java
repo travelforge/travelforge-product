@@ -2,7 +2,7 @@
  * The Travelforge Project
  * http://www.travelforge.org
  *
- * Copyright (c) 2015 - 2017 Matthias Deck
+ * Copyright (c) 2015-present Matthias Deck
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,28 +17,22 @@
  *  limitations under the License.
  */
 
-package org.travelforge.product.service;
+package org.travelforge.product.service.hotel;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import org.travelforge.product.service.Pageable;
+import org.travelforge.product.service.Pagination;
 
 /**
  * @author Matthias Deck
  */
-public class PackageGroupRequest extends PackageRequest {
+@Data
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class HotelOfferRequest extends HotelRequest implements Pageable {
 
-    private static final long serialVersionUID = 1L;
+    private Pagination pagination;
 
-    public PackageGroupRequest() {
-    }
-
-    public PackageGroupRequest(Context context, RequestOptions options, PackageRequestParameters parameters) {
-        super(context, options, parameters);
-    }
-
-    @Override
-    public String toString() {
-        return "PackageGroupRequest{" +
-                "context=" + getContext() +
-                ", options=" + getOptions() +
-                ", parameters=" + getParameters() +
-                '}';
-    }
 }

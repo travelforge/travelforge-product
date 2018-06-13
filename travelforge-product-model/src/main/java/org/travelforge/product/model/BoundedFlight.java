@@ -2,7 +2,7 @@
  * The Travelforge Project
  * http://www.travelforge.org
  *
- * Copyright (c) 2015 - 2017 Matthias Deck
+ * Copyright (c) 2015-present Matthias Deck
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ import java.util.List;
  */
 public abstract class BoundedFlight implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
 
     private String provider;
     private Airline airline;
@@ -46,6 +46,7 @@ public abstract class BoundedFlight implements Serializable {
     private Airport arrivalAirport;
     private LocalDateTime arrivalDateTime;
     private Integer stopOver;
+    private Integer offset;
     private Integer duration;
     private List<FlightSegment> segments;
 
@@ -68,6 +69,26 @@ public abstract class BoundedFlight implements Serializable {
         this.arrivalAirport = arrivalAirport;
         this.arrivalDateTime = arrivalDateTime;
         this.stopOver = stopOver;
+        this.duration = duration;
+        this.segments = segments;
+    }
+
+    public BoundedFlight(String provider, Airline airline, String flightNumber, String flightClass, String flightId, String flightCode, String flightKey, String bookingClass, String bookingCode, Airport departureAirport, LocalDateTime departureDateTime, Airport arrivalAirport, LocalDateTime arrivalDateTime, Integer stopOver, Integer offset, Integer duration, List<FlightSegment> segments) {
+        this.provider = provider;
+        this.airline = airline;
+        this.flightNumber = flightNumber;
+        this.flightClass = flightClass;
+        this.flightId = flightId;
+        this.flightCode = flightCode;
+        this.flightKey = flightKey;
+        this.bookingClass = bookingClass;
+        this.bookingCode = bookingCode;
+        this.departureAirport = departureAirport;
+        this.departureDateTime = departureDateTime;
+        this.arrivalAirport = arrivalAirport;
+        this.arrivalDateTime = arrivalDateTime;
+        this.stopOver = stopOver;
+        this.offset = offset;
         this.duration = duration;
         this.segments = segments;
     }
@@ -184,6 +205,14 @@ public abstract class BoundedFlight implements Serializable {
         this.stopOver = stopOver;
     }
 
+    public Integer getOffset() {
+        return offset;
+    }
+
+    public void setOffset(Integer offset) {
+        this.offset = offset;
+    }
+
     public Integer getDuration() {
         return duration;
     }
@@ -225,6 +254,7 @@ public abstract class BoundedFlight implements Serializable {
         if (arrivalDateTime != null ? !arrivalDateTime.equals(that.arrivalDateTime) : that.arrivalDateTime != null)
             return false;
         if (stopOver != null ? !stopOver.equals(that.stopOver) : that.stopOver != null) return false;
+        if (offset != null ? !offset.equals(that.offset) : that.offset != null) return false;
         if (duration != null ? !duration.equals(that.duration) : that.duration != null) return false;
         return segments != null ? segments.equals(that.segments) : that.segments == null;
     }
@@ -245,6 +275,7 @@ public abstract class BoundedFlight implements Serializable {
         result = 31 * result + (arrivalAirport != null ? arrivalAirport.hashCode() : 0);
         result = 31 * result + (arrivalDateTime != null ? arrivalDateTime.hashCode() : 0);
         result = 31 * result + (stopOver != null ? stopOver.hashCode() : 0);
+        result = 31 * result + (offset != null ? offset.hashCode() : 0);
         result = 31 * result + (duration != null ? duration.hashCode() : 0);
         result = 31 * result + (segments != null ? segments.hashCode() : 0);
         return result;
@@ -252,7 +283,7 @@ public abstract class BoundedFlight implements Serializable {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "{" +
+        return "BoundedFlight{" +
                 "provider='" + provider + '\'' +
                 ", airline=" + airline +
                 ", flightNumber='" + flightNumber + '\'' +
@@ -267,6 +298,7 @@ public abstract class BoundedFlight implements Serializable {
                 ", arrivalAirport=" + arrivalAirport +
                 ", arrivalDateTime=" + arrivalDateTime +
                 ", stopOver=" + stopOver +
+                ", offset=" + offset +
                 ", duration=" + duration +
                 ", segments=" + segments +
                 '}';
@@ -288,6 +320,7 @@ public abstract class BoundedFlight implements Serializable {
         protected Airport arrivalAirport;
         protected LocalDateTime arrivalDateTime;
         protected Integer stopOver;
+        protected Integer offset;
         protected Integer duration;
         protected List<FlightSegment> segments;
 
@@ -375,6 +408,12 @@ public abstract class BoundedFlight implements Serializable {
         @SuppressWarnings("unchecked")
         public T_BUILDER stopOver(Integer stopOver) {
             this.stopOver = stopOver;
+            return (T_BUILDER) this;
+        }
+
+        @SuppressWarnings("unchecked")
+        public T_BUILDER offset(Integer offset) {
+            this.offset = offset;
             return (T_BUILDER) this;
         }
 

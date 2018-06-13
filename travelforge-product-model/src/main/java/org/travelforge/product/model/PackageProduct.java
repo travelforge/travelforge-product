@@ -2,7 +2,7 @@
  * The Travelforge Project
  * http://www.travelforge.org
  *
- * Copyright (c) 2015 - 2017 Matthias Deck
+ * Copyright (c) 2015-present Matthias Deck
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import java.util.*;
 /**
  * @author Matthias Deck
  */
-public class PackageProduct implements Serializable {
+public class PackageProduct implements FlightComponent, HotelComponent, Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -91,6 +91,7 @@ public class PackageProduct implements Serializable {
         this.travelPeriod = travelPeriod;
     }
 
+    @Override
     public Flight getFlight() {
         return flight;
     }
@@ -99,6 +100,7 @@ public class PackageProduct implements Serializable {
         this.flight = flight;
     }
 
+    @Override
     public Hotel getHotel() {
         return hotel;
     }
