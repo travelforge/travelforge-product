@@ -20,8 +20,6 @@
 package org.travelforge.product.service.packages;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import org.travelforge.product.service.FlightProperties;
 import org.travelforge.product.service.HotelProperties;
 import org.travelforge.product.service.ProductProperties;
@@ -36,8 +34,6 @@ import java.util.List;
  * @author Matthias Deck
  */
 @Data
-@EqualsAndHashCode
-@ToString
 public class PackageProductProperties implements ProductProperties, FlightProperties, HotelProperties, Serializable {
 
     private List<Integer> productGroups;
@@ -60,10 +56,21 @@ public class PackageProductProperties implements ProductProperties, FlightProper
     private LocalTime travelPeriodReturnTimeMin;
     private LocalTime travelPeriodReturnTimeMax;
     private List<Integer> travelPeriodDurations;
+    private List<String> flightProviders;
     private List<String> flightDepartureAirportCodes;
     private List<String> flightArrivalAirportCodes;
     private List<String> flightAirlineCodes;
     private Integer flightStopOverMax;
+    private String flightClass;
+    private List<String> flightBookingClasses;
+    private Integer flightDistanceMin;
+    private Integer flightDistanceMax;
+    private Integer flightDurationMin;
+    private Integer flightDurationMax;
+    private List<String> flightOutboundFlightIds;
+    private List<String> flightInboundFlightIds;
+    private List<String> flightOutboundFlightCodes;
+    private List<String> flightInboundFlightCodes;
     private List<Integer> hotelCodes;
     private List<String> hotelProductCodes;
     private Float hotelCategory;
