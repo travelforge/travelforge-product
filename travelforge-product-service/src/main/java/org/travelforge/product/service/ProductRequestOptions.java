@@ -2,7 +2,7 @@
  * The Travelforge Project
  * http://www.travelforge.org
  *
- * Copyright (c) 2015 - 2017 Matthias Deck
+ * Copyright (c) 2015-present Matthias Deck
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,10 @@
 
 package org.travelforge.product.service;
 
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -26,28 +30,23 @@ import java.util.Objects;
 /**
  * @author Matthias Deck
  */
-public class RequestOptions extends LinkedHashMap<String, Object> {
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+public class ProductRequestOptions extends LinkedHashMap<String, Object> {
 
     private static final long serialVersionUID = 1L;
 
-    public RequestOptions() {
+    public ProductRequestOptions(Map<? extends String, ?> m) {
+        super(m);
     }
 
-    public RequestOptions(Map<? extends String, ?> map) {
-        super(map);
-    }
-
-    public RequestOptions merge(RequestOptions other) {
+    public ProductRequestOptions merge(ProductRequestOptions other) {
 
         Map<String, Object> options = new LinkedHashMap<>();
         options.putAll(this);
         options.putAll(other);
         options.values().removeIf(Objects::isNull);
-        return new RequestOptions(options);
-    }
-
-    @Override
-    public String toString() {
-        return "RequestOptions" + super.toString();
+        return new ProductRequestOptions(options);
     }
 }

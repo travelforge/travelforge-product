@@ -23,7 +23,7 @@
 
     <groupId>org.travelforge.product</groupId>
     <artifactId>travelforge-product</artifactId>
-    <version>0.10-SNAPSHOT</version>
+    <version>0.10.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Travelforge Product</name>
@@ -102,6 +102,13 @@
                         <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
                     </flowInitContext>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.jcraft</groupId>
+                        <artifactId>jsch</artifactId>
+                        <version>0.1.54</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>

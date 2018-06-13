@@ -2,7 +2,7 @@
  * The Travelforge Project
  * http://www.travelforge.org
  *
- * Copyright (c) 2015 - 2017 Matthias Deck
+ * Copyright (c) 2015-present Matthias Deck
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import java.time.LocalDateTime;
  */
 public class FlightSegment implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
 
     private Airline airline;
     private String flightNumber;
@@ -37,6 +37,7 @@ public class FlightSegment implements Serializable {
     private LocalDateTime departureDateTime;
     private Airport arrivalAirport;
     private LocalDateTime arrivalDateTime;
+    private Integer offset;
     private Integer duration;
 
     public FlightSegment() {
@@ -51,6 +52,19 @@ public class FlightSegment implements Serializable {
         this.departureDateTime = departureDateTime;
         this.arrivalAirport = arrivalAirport;
         this.arrivalDateTime = arrivalDateTime;
+        this.duration = duration;
+    }
+
+    public FlightSegment(Airline airline, String flightNumber, String flightClass, String bookingClass, Airport departureAirport, LocalDateTime departureDateTime, Airport arrivalAirport, LocalDateTime arrivalDateTime, Integer offset, Integer duration) {
+        this.airline = airline;
+        this.flightNumber = flightNumber;
+        this.flightClass = flightClass;
+        this.bookingClass = bookingClass;
+        this.departureAirport = departureAirport;
+        this.departureDateTime = departureDateTime;
+        this.arrivalAirport = arrivalAirport;
+        this.arrivalDateTime = arrivalDateTime;
+        this.offset = offset;
         this.duration = duration;
     }
 
@@ -122,6 +136,14 @@ public class FlightSegment implements Serializable {
         this.arrivalDateTime = arrivalDateTime;
     }
 
+    public Integer getOffset() {
+        return offset;
+    }
+
+    public void setOffset(Integer offset) {
+        this.offset = offset;
+    }
+
     public Integer getDuration() {
         return duration;
     }
@@ -149,6 +171,7 @@ public class FlightSegment implements Serializable {
             return false;
         if (arrivalDateTime != null ? !arrivalDateTime.equals(that.arrivalDateTime) : that.arrivalDateTime != null)
             return false;
+        if (offset != null ? !offset.equals(that.offset) : that.offset != null) return false;
         return duration != null ? duration.equals(that.duration) : that.duration == null;
     }
 
@@ -162,6 +185,7 @@ public class FlightSegment implements Serializable {
         result = 31 * result + (departureDateTime != null ? departureDateTime.hashCode() : 0);
         result = 31 * result + (arrivalAirport != null ? arrivalAirport.hashCode() : 0);
         result = 31 * result + (arrivalDateTime != null ? arrivalDateTime.hashCode() : 0);
+        result = 31 * result + (offset != null ? offset.hashCode() : 0);
         result = 31 * result + (duration != null ? duration.hashCode() : 0);
         return result;
     }
@@ -177,6 +201,7 @@ public class FlightSegment implements Serializable {
                 ", departureDateTime=" + departureDateTime +
                 ", arrivalAirport=" + arrivalAirport +
                 ", arrivalDateTime=" + arrivalDateTime +
+                ", offset=" + offset +
                 ", duration=" + duration +
                 '}';
     }
@@ -191,6 +216,7 @@ public class FlightSegment implements Serializable {
         protected LocalDateTime departureDateTime;
         protected Airport arrivalAirport;
         protected LocalDateTime arrivalDateTime;
+        protected Integer offset;
         protected Integer duration;
 
         protected Builder() {
@@ -245,6 +271,12 @@ public class FlightSegment implements Serializable {
         }
 
         @SuppressWarnings("unchecked")
+        public T_BUILDER offset(Integer offset) {
+            this.offset = offset;
+            return (T_BUILDER) this;
+        }
+
+        @SuppressWarnings("unchecked")
         public T_BUILDER duration(Integer duration) {
             this.duration = duration;
             return (T_BUILDER) this;
@@ -252,7 +284,7 @@ public class FlightSegment implements Serializable {
 
         @SuppressWarnings("unchecked")
         public T_FLIGHT_SEGMENT build() {
-            return (T_FLIGHT_SEGMENT) new FlightSegment(airline, flightNumber, flightClass, bookingClass, departureAirport, departureDateTime, arrivalAirport, arrivalDateTime, duration);
+            return (T_FLIGHT_SEGMENT) new FlightSegment(airline, flightNumber, flightClass, bookingClass, departureAirport, departureDateTime, arrivalAirport, arrivalDateTime, offset, duration);
         }
     }
 }
