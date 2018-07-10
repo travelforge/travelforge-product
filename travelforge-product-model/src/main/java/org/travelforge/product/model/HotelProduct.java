@@ -36,13 +36,14 @@ public class HotelProduct implements HotelComponent, Serializable {
     private Hotel hotel;
     private List<Extra> extras;
     private Price price;
+    private Map<String, Object> properties;
     private Map<String, Object> references;
 
     public HotelProduct() {
 
     }
 
-    public HotelProduct(String provider, TourOperator tourOperator, Travellers travellers, TravelPeriod travelPeriod, Hotel hotel, List<Extra> extras, Price price, Map<String, Object> references) {
+    public HotelProduct(String provider, TourOperator tourOperator, Travellers travellers, TravelPeriod travelPeriod, Hotel hotel, List<Extra> extras, Price price, Map<String, Object> properties, Map<String, Object> references) {
         this.provider = provider;
         this.tourOperator = tourOperator;
         this.travellers = travellers;
@@ -50,6 +51,7 @@ public class HotelProduct implements HotelComponent, Serializable {
         this.hotel = hotel;
         this.extras = extras;
         this.price = price;
+        this.properties = properties;
         this.references = references;
     }
 
@@ -114,6 +116,14 @@ public class HotelProduct implements HotelComponent, Serializable {
         this.price = price;
     }
 
+    public Map<String, Object> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Map<String, Object> properties) {
+        this.properties = properties;
+    }
+
     public Map<String, Object> getReferences() {
         return references;
     }
@@ -136,6 +146,7 @@ public class HotelProduct implements HotelComponent, Serializable {
         if (hotel != null ? !hotel.equals(that.hotel) : that.hotel != null) return false;
         if (extras != null ? !extras.equals(that.extras) : that.extras != null) return false;
         if (price != null ? !price.equals(that.price) : that.price != null) return false;
+        if (properties != null ? !properties.equals(that.properties) : that.properties != null) return false;
         return references != null ? references.equals(that.references) : that.references == null;
     }
 
@@ -148,6 +159,7 @@ public class HotelProduct implements HotelComponent, Serializable {
         result = 31 * result + (hotel != null ? hotel.hashCode() : 0);
         result = 31 * result + (extras != null ? extras.hashCode() : 0);
         result = 31 * result + (price != null ? price.hashCode() : 0);
+        result = 31 * result + (properties != null ? properties.hashCode() : 0);
         result = 31 * result + (references != null ? references.hashCode() : 0);
         return result;
     }
@@ -162,6 +174,7 @@ public class HotelProduct implements HotelComponent, Serializable {
                 ", hotel=" + hotel +
                 ", extras=" + extras +
                 ", price=" + price +
+                ", properties=" + properties +
                 ", references=" + references +
                 '}';
     }
@@ -175,6 +188,7 @@ public class HotelProduct implements HotelComponent, Serializable {
         protected Hotel hotel;
         protected List<Extra> extras;
         protected Price price;
+        protected Map<String, Object> properties;
         protected Map<String, Object> references;
 
         protected Builder() {
@@ -224,6 +238,13 @@ public class HotelProduct implements HotelComponent, Serializable {
         }
 
         @SuppressWarnings("unchecked")
+        public T_BUILDER properties(Map<String, Object> properties) {
+            this.properties = properties != null
+                    ? new LinkedHashMap<>(properties) : null;
+            return (T_BUILDER) this;
+        }
+
+        @SuppressWarnings("unchecked")
         public T_BUILDER references(Map<String, Object> references) {
             this.references = references != null
                     ? new LinkedHashMap<>(references) : null;
@@ -232,7 +253,7 @@ public class HotelProduct implements HotelComponent, Serializable {
 
         @SuppressWarnings("unchecked")
         public T_HOTEL_PRODUCT build() {
-            return (T_HOTEL_PRODUCT) new HotelProduct(provider, tourOperator, travellers, travelPeriod, hotel, extras, price, references);
+            return (T_HOTEL_PRODUCT) new HotelProduct(provider, tourOperator, travellers, travelPeriod, hotel, extras, price, properties, references);
         }
     }
 }

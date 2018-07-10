@@ -37,13 +37,14 @@ public class PackageProduct implements FlightComponent, HotelComponent, Serializ
     private Hotel hotel;
     private List<Extra> extras;
     private Price price;
+    private Map<String, Object> properties;
     private Map<String, Object> references;
 
     public PackageProduct() {
 
     }
 
-    public PackageProduct(String provider, TourOperator tourOperator, Travellers travellers, TravelPeriod travelPeriod, Flight flight, Hotel hotel, List<Extra> extras, Price price, Map<String, Object> references) {
+    public PackageProduct(String provider, TourOperator tourOperator, Travellers travellers, TravelPeriod travelPeriod, Flight flight, Hotel hotel, List<Extra> extras, Price price, Map<String, Object> properties, Map<String, Object> references) {
         this.provider = provider;
         this.tourOperator = tourOperator;
         this.travellers = travellers;
@@ -52,6 +53,7 @@ public class PackageProduct implements FlightComponent, HotelComponent, Serializ
         this.hotel = hotel;
         this.extras = extras;
         this.price = price;
+        this.properties = properties;
         this.references = references;
     }
 
@@ -125,6 +127,14 @@ public class PackageProduct implements FlightComponent, HotelComponent, Serializ
         this.price = price;
     }
 
+    public Map<String, Object> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Map<String, Object> properties) {
+        this.properties = properties;
+    }
+
     public Map<String, Object> getReferences() {
         return references;
     }
@@ -148,6 +158,7 @@ public class PackageProduct implements FlightComponent, HotelComponent, Serializ
         if (hotel != null ? !hotel.equals(that.hotel) : that.hotel != null) return false;
         if (extras != null ? !extras.equals(that.extras) : that.extras != null) return false;
         if (price != null ? !price.equals(that.price) : that.price != null) return false;
+        if (properties != null ? !properties.equals(that.properties) : that.properties != null) return false;
         return references != null ? references.equals(that.references) : that.references == null;
     }
 
@@ -161,6 +172,7 @@ public class PackageProduct implements FlightComponent, HotelComponent, Serializ
         result = 31 * result + (hotel != null ? hotel.hashCode() : 0);
         result = 31 * result + (extras != null ? extras.hashCode() : 0);
         result = 31 * result + (price != null ? price.hashCode() : 0);
+        result = 31 * result + (properties != null ? properties.hashCode() : 0);
         result = 31 * result + (references != null ? references.hashCode() : 0);
         return result;
     }
@@ -176,6 +188,7 @@ public class PackageProduct implements FlightComponent, HotelComponent, Serializ
                 ", hotel=" + hotel +
                 ", extras=" + extras +
                 ", price=" + price +
+                ", properties=" + properties +
                 ", references=" + references +
                 '}';
     }
@@ -190,6 +203,7 @@ public class PackageProduct implements FlightComponent, HotelComponent, Serializ
         protected Hotel hotel;
         protected List<Extra> extras;
         protected Price price;
+        protected Map<String, Object> properties;
         protected Map<String, Object> references;
 
         protected Builder() {
@@ -245,6 +259,13 @@ public class PackageProduct implements FlightComponent, HotelComponent, Serializ
         }
 
         @SuppressWarnings("unchecked")
+        public T_BUILDER properties(Map<String, Object> properties) {
+            this.properties = properties != null
+                    ? new LinkedHashMap<>(properties) : null;
+            return (T_BUILDER) this;
+        }
+
+        @SuppressWarnings("unchecked")
         public T_BUILDER references(Map<String, Object> references) {
             this.references = references != null
                     ? new LinkedHashMap<>(references) : null;
@@ -253,7 +274,7 @@ public class PackageProduct implements FlightComponent, HotelComponent, Serializ
 
         @SuppressWarnings("unchecked")
         public T_PACKAGE_PRODUCT build() {
-            return (T_PACKAGE_PRODUCT) new PackageProduct(provider, tourOperator, travellers, travelPeriod, flight, hotel, extras, price, references);
+            return (T_PACKAGE_PRODUCT) new PackageProduct(provider, tourOperator, travellers, travelPeriod, flight, hotel, extras, price, properties, references);
         }
     }
 }
