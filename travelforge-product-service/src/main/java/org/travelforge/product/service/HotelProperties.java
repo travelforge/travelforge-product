@@ -128,6 +128,10 @@ public interface HotelProperties extends Serializable {
 
     void setHotelRecommendationsWellness(Float hotelRecommendationsWellness);
 
+    List<String> getHotelQualifiers();
+
+    void setHotelQualifiers(List<String> hotelQualifiers);
+
     List<String> getHotelRoomCodes();
 
     void setHotelRoomCodes(List<String> hotelRoomCodes);
@@ -251,6 +255,10 @@ public interface HotelProperties extends Serializable {
             // HOTEL_RECOMMENDATIONS_WELLNESS
             if (source.getHotelRecommendationsWellness() != null) {
                 target.setHotelRecommendationsWellness(source.getHotelRecommendationsWellness());
+            }
+            // HOTEL_QUALIFIERS
+            if (source.getHotelQualifiers() != null) {
+                target.setHotelQualifiers(new ArrayList<>(source.getHotelQualifiers()));
             }
             // HOTEL_ROOM_CODES
             if (source.getHotelRoomCodes() != null) {
