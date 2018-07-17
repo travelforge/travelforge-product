@@ -22,8 +22,10 @@ package org.travelforge.product.model;
 /**
  * @author Matthias Deck
  */
-public interface HotelComponent {
+public interface Product  {
 
-    Hotel getHotel();
-    void setHotel(Hotel hotel);
+    String getProvider();
+    void setProvider(String provider);
+    Price getPrice();
+    void setPrice(Price price);
 }

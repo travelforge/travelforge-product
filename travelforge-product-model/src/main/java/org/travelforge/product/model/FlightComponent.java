@@ -25,4 +25,5 @@ package org.travelforge.product.model;
 public interface FlightComponent {
 
     Flight getFlight();
+    void setFlight(Flight flight);
 }

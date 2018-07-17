@@ -25,7 +25,7 @@ import java.util.*;
 /**
  * @author Matthias Deck
  */
-public class PackageProduct implements FlightComponent, HotelComponent, Serializable {
+public class PackageProduct implements Product, FlightComponent, HotelComponent, Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -61,10 +61,12 @@ public class PackageProduct implements FlightComponent, HotelComponent, Serializ
         return new Builder<>();
     }
 
+    @Override
     public String getProvider() {
         return provider;
     }
 
+    @Override
     public void setProvider(String provider) {
         this.provider = provider;
     }
@@ -98,6 +100,7 @@ public class PackageProduct implements FlightComponent, HotelComponent, Serializ
         return flight;
     }
 
+    @Override
     public void setFlight(Flight flight) {
         this.flight = flight;
     }
@@ -119,10 +122,12 @@ public class PackageProduct implements FlightComponent, HotelComponent, Serializ
         this.extras = extras;
     }
 
+    @Override
     public Price getPrice() {
         return price;
     }
 
+    @Override
     public void setPrice(Price price) {
         this.price = price;
     }
