@@ -25,7 +25,7 @@ import java.util.*;
 /**
  * @author Matthias Deck
  */
-public class HotelProduct implements HotelComponent, Serializable {
+public class HotelProduct implements Product, HotelComponent, Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -59,10 +59,12 @@ public class HotelProduct implements HotelComponent, Serializable {
         return new Builder<>();
     }
 
+    @Override
     public String getProvider() {
         return provider;
     }
 
+    @Override
     public void setProvider(String provider) {
         this.provider = provider;
     }
@@ -96,6 +98,7 @@ public class HotelProduct implements HotelComponent, Serializable {
         return hotel;
     }
 
+    @Override
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
     }
@@ -108,10 +111,12 @@ public class HotelProduct implements HotelComponent, Serializable {
         this.extras = extras;
     }
 
+    @Override
     public Price getPrice() {
         return price;
     }
 
+    @Override
     public void setPrice(Price price) {
         this.price = price;
     }
