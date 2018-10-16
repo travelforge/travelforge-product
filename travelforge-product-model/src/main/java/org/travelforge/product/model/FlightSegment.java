@@ -30,6 +30,7 @@ public class FlightSegment implements Serializable {
     private static final long serialVersionUID = 2L;
 
     private Airline airline;
+    private String operatingCarrier;
     private String flightNumber;
     private String flightClass;
     private String bookingClass;
@@ -68,6 +69,20 @@ public class FlightSegment implements Serializable {
         this.duration = duration;
     }
 
+    public FlightSegment(Airline airline,  String operatingCarrier, String flightNumber, String flightClass, String bookingClass, Airport departureAirport, LocalDateTime departureDateTime, Airport arrivalAirport, LocalDateTime arrivalDateTime, Integer offset, Integer duration) {
+        this.airline = airline;
+        this.operatingCarrier = operatingCarrier;
+        this.flightNumber = flightNumber;
+        this.flightClass = flightClass;
+        this.bookingClass = bookingClass;
+        this.departureAirport = departureAirport;
+        this.departureDateTime = departureDateTime;
+        this.arrivalAirport = arrivalAirport;
+        this.arrivalDateTime = arrivalDateTime;
+        this.offset = offset;
+        this.duration = duration;
+    }
+
     public static Builder builder() {
         return new Builder<>();
     }
@@ -78,6 +93,14 @@ public class FlightSegment implements Serializable {
 
     public void setAirline(Airline airline) {
         this.airline = airline;
+    }
+
+    public String getOperatingCarrier() {
+        return operatingCarrier;
+    }
+
+    public void setOperatingCarrier(String operatingCarrier) {
+        this.operatingCarrier = operatingCarrier;
     }
 
     public String getFlightNumber() {
@@ -160,6 +183,7 @@ public class FlightSegment implements Serializable {
         FlightSegment that = (FlightSegment) o;
 
         if (airline != null ? !airline.equals(that.airline) : that.airline != null) return false;
+        if (operatingCarrier != null ? !operatingCarrier.equals(that.operatingCarrier) : that.operatingCarrier != null) return false;
         if (flightNumber != null ? !flightNumber.equals(that.flightNumber) : that.flightNumber != null) return false;
         if (flightClass != null ? !flightClass.equals(that.flightClass) : that.flightClass != null) return false;
         if (bookingClass != null ? !bookingClass.equals(that.bookingClass) : that.bookingClass != null) return false;
@@ -178,6 +202,7 @@ public class FlightSegment implements Serializable {
     @Override
     public int hashCode() {
         int result = airline != null ? airline.hashCode() : 0;
+        result = 31 * result + (operatingCarrier != null ? operatingCarrier.hashCode() : 0);
         result = 31 * result + (flightNumber != null ? flightNumber.hashCode() : 0);
         result = 31 * result + (flightClass != null ? flightClass.hashCode() : 0);
         result = 31 * result + (bookingClass != null ? bookingClass.hashCode() : 0);
@@ -194,6 +219,7 @@ public class FlightSegment implements Serializable {
     public String toString() {
         return "FlightSegment{" +
                 "airline=" + airline +
+                ", operatingCarrier='" + operatingCarrier + '\'' +
                 ", flightNumber='" + flightNumber + '\'' +
                 ", flightClass='" + flightClass + '\'' +
                 ", bookingClass='" + bookingClass + '\'' +
@@ -209,6 +235,7 @@ public class FlightSegment implements Serializable {
     public static class Builder<T_BUILDER extends Builder, T_FLIGHT_SEGMENT extends FlightSegment> {
 
         protected Airline airline;
+        protected String operatingCarrier;
         protected String flightNumber;
         protected String flightClass;
         protected String bookingClass;
@@ -225,6 +252,12 @@ public class FlightSegment implements Serializable {
         @SuppressWarnings("unchecked")
         public T_BUILDER airline(Airline airline) {
             this.airline = airline;
+            return (T_BUILDER) this;
+        }
+
+        @SuppressWarnings("unchecked")
+        public T_BUILDER operatingCarrier(String operatingCarrier) {
+            this.operatingCarrier = operatingCarrier;
             return (T_BUILDER) this;
         }
 
@@ -284,7 +317,7 @@ public class FlightSegment implements Serializable {
 
         @SuppressWarnings("unchecked")
         public T_FLIGHT_SEGMENT build() {
-            return (T_FLIGHT_SEGMENT) new FlightSegment(airline, flightNumber, flightClass, bookingClass, departureAirport, departureDateTime, arrivalAirport, arrivalDateTime, offset, duration);
+            return (T_FLIGHT_SEGMENT) new FlightSegment(airline, operatingCarrier, flightNumber, flightClass, bookingClass, departureAirport, departureDateTime, arrivalAirport, arrivalDateTime, offset, duration);
         }
     }
 }
