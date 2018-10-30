@@ -23,6 +23,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.travelforge.product.model.HotelProductGroup;
+import org.travelforge.product.service.Facet;
 import org.travelforge.product.service.ProductResponse;
 
 import java.util.List;
@@ -36,5 +37,6 @@ import java.util.List;
 public class HotelGroupResponse extends ProductResponse {
 
     private List<HotelProductGroup> productGroups;
+    private List<Facet> facets;
 
 }
