@@ -36,6 +36,7 @@ public class Hotel implements Serializable {
     private Float category;
     private Location location;
     private List<HotelAttribute> attributes;
+    private List<HotelQualifier> qualifiers;
     private Map<String, Number> recommendations;
     private HotelRoom room;
     private HotelBoard board;
@@ -51,6 +52,20 @@ public class Hotel implements Serializable {
         this.category = category;
         this.location = location;
         this.attributes = attributes;
+        this.recommendations = recommendations;
+        this.room = room;
+        this.board = board;
+    }
+
+    public Hotel(String provider, Integer code, String productCode, String name, Float category, Location location, List<HotelAttribute> attributes, List<HotelQualifier> qualifiers, Map<String, Number> recommendations, HotelRoom room, HotelBoard board) {
+        this.provider = provider;
+        this.code = code;
+        this.productCode = productCode;
+        this.name = name;
+        this.category = category;
+        this.location = location;
+        this.attributes = attributes;
+        this.qualifiers = qualifiers;
         this.recommendations = recommendations;
         this.room = room;
         this.board = board;
@@ -116,6 +131,14 @@ public class Hotel implements Serializable {
         this.attributes = attributes;
     }
 
+    public List<HotelQualifier> getQualifiers() {
+        return qualifiers;
+    }
+
+    public void setQualifiers(List<HotelQualifier> qualifiers) {
+        this.qualifiers = qualifiers;
+    }
+
     public Map<String, Number> getRecommendations() {
         return recommendations;
     }
@@ -154,6 +177,7 @@ public class Hotel implements Serializable {
         if (category != null ? !category.equals(hotel.category) : hotel.category != null) return false;
         if (location != null ? !location.equals(hotel.location) : hotel.location != null) return false;
         if (attributes != null ? !attributes.equals(hotel.attributes) : hotel.attributes != null) return false;
+        if (qualifiers != null ? !qualifiers.equals(hotel.qualifiers) : hotel.qualifiers != null) return false;
         if (recommendations != null ? !recommendations.equals(hotel.recommendations) : hotel.recommendations != null)
             return false;
         if (room != null ? !room.equals(hotel.room) : hotel.room != null) return false;
@@ -169,6 +193,7 @@ public class Hotel implements Serializable {
         result = 31 * result + (category != null ? category.hashCode() : 0);
         result = 31 * result + (location != null ? location.hashCode() : 0);
         result = 31 * result + (attributes != null ? attributes.hashCode() : 0);
+        result = 31 * result + (qualifiers != null ? qualifiers.hashCode() : 0);
         result = 31 * result + (recommendations != null ? recommendations.hashCode() : 0);
         result = 31 * result + (room != null ? room.hashCode() : 0);
         result = 31 * result + (board != null ? board.hashCode() : 0);
@@ -185,6 +210,7 @@ public class Hotel implements Serializable {
                 ", category=" + category +
                 ", location=" + location +
                 ", attributes=" + attributes +
+                ", qualifiers=" + qualifiers +
                 ", recommendations=" + recommendations +
                 ", room=" + room +
                 ", board=" + board +
@@ -200,6 +226,7 @@ public class Hotel implements Serializable {
         protected Float category;
         protected Location location;
         protected List<HotelAttribute> attributes;
+        protected List<HotelQualifier> qualifiers;
         protected Map<String, Number> recommendations;
         protected HotelRoom room;
         protected HotelBoard board;
@@ -251,6 +278,13 @@ public class Hotel implements Serializable {
         }
 
         @SuppressWarnings("unchecked")
+        public T_BUILDER qualifiers(Collection<? extends HotelQualifier> qualifiers) {
+            this.qualifiers = qualifiers != null
+                    ? new ArrayList<>(qualifiers) : null;
+            return (T_BUILDER) this;
+        }
+
+        @SuppressWarnings("unchecked")
         public T_BUILDER recommendations(Map<? extends String, ? extends Number> recommendations) {
             this.recommendations = recommendations != null
                     ? new LinkedHashMap<>(recommendations) : null;
@@ -271,7 +305,7 @@ public class Hotel implements Serializable {
 
         @SuppressWarnings("unchecked")
         public T_HOTEL build() {
-            return (T_HOTEL) new Hotel(provider, code, productCode, name, category, location, attributes, recommendations, room, board);
+            return (T_HOTEL) new Hotel(provider, code, productCode, name, category, location, attributes, qualifiers, recommendations, room, board);
         }
     }
 }
