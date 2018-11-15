@@ -113,10 +113,14 @@ public interface FlightProperties extends Serializable {
             }
 
             // FLIGHT_STOP_OVER_MAX
-            target.setFlightStopOverMax(source.getFlightStopOverMax());
+            if (source.getFlightStopOverMax() != null) {
+                target.setFlightStopOverMax(source.getFlightStopOverMax());
+            }
 
             // FLIGHT_CLASS
-            target.setFlightClass(source.getFlightClass());
+            if (source.getFlightClass() != null) {
+                target.setFlightClass(source.getFlightClass());
+            }
 
             // FLIGHT_BOOKING_CLASSES
             if (source.getFlightBookingClasses() != null) {
@@ -124,16 +128,24 @@ public interface FlightProperties extends Serializable {
             }
 
             // FLIGHT_DISTANCE_MIN
-            target.setFlightDistanceMin(source.getFlightDistanceMin());
+            if (source.getFlightDistanceMin() != null) {
+                target.setFlightDistanceMin(source.getFlightDistanceMin());
+            }
 
             // FLIGHT_DISTANCE_MAX
-            target.setFlightDistanceMax(source.getFlightDistanceMax());
+            if (source.getFlightDistanceMax() != null) {
+                target.setFlightDistanceMax(source.getFlightDistanceMax());
+            }
 
             // FLIGHT_DURATION_MIN
-            target.setFlightDurationMin(source.getFlightDurationMin());
+            if (source.getFlightDurationMin() != null) {
+                target.setFlightDurationMin(source.getFlightDurationMin());
+            }
 
             // FLIGHT_DURATION_MAX
-            target.setFlightDurationMax(source.getFlightDurationMax());
+            if (source.getFlightDurationMax() != null) {
+                target.setFlightDurationMax(source.getFlightDurationMax());
+            }
 
             // FLIGHT_OUTBOUND_FLIGHT_IDS
             if (source.getFlightOutboundFlightIds() != null) {
