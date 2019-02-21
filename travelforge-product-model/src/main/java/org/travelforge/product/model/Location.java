@@ -34,6 +34,9 @@ public class Location implements Serializable {
     private Float latitude;
     private Float longitude;
 
+    private Integer avgAirTemperature;
+    private Integer avgWaterTemperature;
+
     public Location() {
     }
 
@@ -43,6 +46,16 @@ public class Location implements Serializable {
         this.city = city;
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+
+    public Location(Country country, Region region, City city, Float latitude, Float longitude, Integer avgAirTemperature, Integer avgWaterTemperature) {
+        this.country = country;
+        this.region = region;
+        this.city = city;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.avgAirTemperature = avgAirTemperature;
+        this.avgWaterTemperature = avgWaterTemperature;
     }
 
     public static Builder builder() {
@@ -89,6 +102,22 @@ public class Location implements Serializable {
         this.longitude = longitude;
     }
 
+    public Integer getAvgAirTemperature() {
+        return avgAirTemperature;
+    }
+
+    public void setAvgAirTemperature(Integer avgAirTemperature) {
+        this.avgAirTemperature = avgAirTemperature;
+    }
+
+    public Integer getAvgWaterTemperature() {
+        return avgWaterTemperature;
+    }
+
+    public void setAvgWaterTemperature(Integer avgWaterTemperature) {
+        this.avgWaterTemperature = avgWaterTemperature;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -100,7 +129,10 @@ public class Location implements Serializable {
         if (region != null ? !region.equals(location.region) : location.region != null) return false;
         if (city != null ? !city.equals(location.city) : location.city != null) return false;
         if (latitude != null ? !latitude.equals(location.latitude) : location.latitude != null) return false;
-        return longitude != null ? longitude.equals(location.longitude) : location.longitude == null;
+        if (longitude != null ? !longitude.equals(location.longitude) : location.longitude != null) return false;
+        if (avgAirTemperature != null ? !avgAirTemperature.equals(location.avgAirTemperature) : location.avgAirTemperature != null)
+            return false;
+        return avgWaterTemperature != null ? avgWaterTemperature.equals(location.avgWaterTemperature) : location.avgWaterTemperature == null;
     }
 
     @Override
@@ -110,6 +142,8 @@ public class Location implements Serializable {
         result = 31 * result + (city != null ? city.hashCode() : 0);
         result = 31 * result + (latitude != null ? latitude.hashCode() : 0);
         result = 31 * result + (longitude != null ? longitude.hashCode() : 0);
+        result = 31 * result + (avgAirTemperature != null ? avgAirTemperature.hashCode() : 0);
+        result = 31 * result + (avgWaterTemperature != null ? avgWaterTemperature.hashCode() : 0);
         return result;
     }
 
@@ -121,6 +155,8 @@ public class Location implements Serializable {
                 ", city=" + city +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
+                ", avgAirTemperature=" + avgAirTemperature +
+                ", avgWaterTemperature=" + avgWaterTemperature +
                 '}';
     }
 
@@ -131,6 +167,9 @@ public class Location implements Serializable {
         protected City city;
         protected Float latitude;
         protected Float longitude;
+
+        protected Integer avgAirTemperature;
+        protected Integer avgWaterTemperature;
 
         protected Builder() {
         }
@@ -166,8 +205,20 @@ public class Location implements Serializable {
         }
 
         @SuppressWarnings("unchecked")
+        public T_BUILDER avgAirTemperature(Integer avgAirTemperature) {
+            this.avgAirTemperature = avgAirTemperature;
+            return (T_BUILDER) this;
+        }
+
+        @SuppressWarnings("unchecked")
+        public T_BUILDER avgWaterTemperature(Integer avgWaterTemperature) {
+            this.avgWaterTemperature = avgWaterTemperature;
+            return (T_BUILDER) this;
+        }
+
+        @SuppressWarnings("unchecked")
         public T_LOCATION build() {
-            return (T_LOCATION) new Location(country, region, city, latitude, longitude);
+            return (T_LOCATION) new Location(country, region, city, latitude, longitude, avgAirTemperature, avgWaterTemperature);
         }
     }
 }
