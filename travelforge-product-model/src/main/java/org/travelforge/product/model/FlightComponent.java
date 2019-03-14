@@ -24,6 +24,9 @@ package org.travelforge.product.model;
  */
 public interface FlightComponent {
 
+    String getProvider();
+    void setProvider(String provider);
+
     Flight getFlight();
     void setFlight(Flight flight);
 }

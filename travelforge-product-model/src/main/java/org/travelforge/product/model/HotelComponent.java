@@ -24,6 +24,10 @@ package org.travelforge.product.model;
  */
 public interface HotelComponent {
 
+
+    String getProvider();
+    void setProvider(String provider);
+
     Hotel getHotel();
     void setHotel(Hotel hotel);
 }
