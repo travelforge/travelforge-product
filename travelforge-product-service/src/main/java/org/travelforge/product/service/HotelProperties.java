@@ -40,6 +40,10 @@ public interface HotelProperties extends Serializable {
 
     void setHotelCategory(Float hotelCategory);
 
+    String getHotelLocation();
+
+    void setHotelLocation(String hotelLocation);
+
     List<String> getHotelLocationCountryCodes();
 
     void setHotelLocationCountryCodes(List<String> hotelLocationCountryCodes);
@@ -167,6 +171,10 @@ public interface HotelProperties extends Serializable {
             // HOTEL_CATEGORY
             if (source.getHotelCategory() != null) {
                 target.setHotelCategory(source.getHotelCategory());
+            }
+            // HOTEL_LOCATION
+            if (source.getHotelLocation() != null) {
+                target.setHotelLocation(source.getHotelLocation());
             }
             // HOTEL_LOCATION_COUNTRY_CODES
             if (source.getHotelLocationCountryCodes() != null) {

@@ -74,6 +74,7 @@ public class PackageProductProperties implements ProductProperties, FlightProper
     private List<Integer> hotelCodes;
     private List<String> hotelProductCodes;
     private Float hotelCategory;
+    private String hotelLocation;
     private List<String> hotelLocationCountryCodes;
     private List<Integer> hotelLocationRegionCodes;
     private List<Integer> hotelLocationCityCodes;
