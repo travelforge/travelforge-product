@@ -28,6 +28,14 @@ import java.util.List;
  */
 public interface HotelProperties extends Serializable {
 
+    String getHotelChain();
+
+    void setHotelChain(String hotelChain);
+
+    String getHotelName();
+
+    void setHotelName(String hotelName);
+
     List<Integer> getHotelCodes();
 
     void setHotelCodes(List<Integer> hotelCodes);
@@ -52,13 +60,25 @@ public interface HotelProperties extends Serializable {
 
     void setHotelLocationRegionCodes(List<Integer> hotelLocationRegionCodes);
 
+    String getHotelLocationRegionName();
+
+    void setHotelLocationRegionName(String hotelLocationRegionName);
+
     List<Integer> getHotelLocationCityCodes();
 
     void setHotelLocationCityCodes(List<Integer> hotelLocationCityCodes);
 
+    String getHotelLocationCityName();
+
+    void setHotelLocationCityName(String hotelLocationCityName);
+
     List<String> getHotelAttributes();
 
     void setHotelAttributes(List<String> hotelAttributes);
+
+    List<String> getHotelGlobalTypes();
+
+    void setHotelGlobalTypes(List<String> hotelGlobalTypes);
 
     Integer getHotelRatingCount();
 
@@ -160,6 +180,14 @@ public interface HotelProperties extends Serializable {
 
         for (HotelProperties source : sources) {
 
+            // HOTEL_CHAIN
+            if (source.getHotelChain() != null) {
+                target.setHotelChain(source.getHotelChain());
+            }
+            // HOTEL_NAME
+            if (source.getHotelName() != null) {
+                target.setHotelName(source.getHotelName());
+            }
             // HOTEL_CODES
             if (source.getHotelCodes() != null) {
                 target.setHotelCodes(new ArrayList<>(source.getHotelCodes()));
@@ -184,13 +212,25 @@ public interface HotelProperties extends Serializable {
             if (source.getHotelLocationRegionCodes() != null) {
                 target.setHotelLocationRegionCodes(new ArrayList<>(source.getHotelLocationRegionCodes()));
             }
+            // HOTEL_LOCATION_REGION_NAME
+            if (source.getHotelLocationRegionName() != null) {
+                target.setHotelLocationRegionName(source.getHotelLocationRegionName());
+            }
             // HOTEL_LOCATION_CITY_CODES
             if (source.getHotelLocationCityCodes() != null) {
                 target.setHotelLocationCityCodes(new ArrayList<>(source.getHotelLocationCityCodes()));
             }
+            // HOTEL_LOCATION_CITY_NAME
+            if (source.getHotelLocationCityName() != null) {
+                target.setHotelLocationCityName(source.getHotelLocationCityName());
+            }
             // HOTEL_ATTRIBUTES
             if (source.getHotelAttributes() != null) {
                 target.setHotelAttributes(new ArrayList<>(source.getHotelAttributes()));
+            }
+            // HOTEL_GLOBAL_TYPES
+            if (source.getHotelGlobalTypes() != null) {
+                target.setHotelGlobalTypes(new ArrayList<>(source.getHotelGlobalTypes()));
             }
             // HOTEL_RATING_COUNT
             if (source.getHotelRatingCount() != null) {

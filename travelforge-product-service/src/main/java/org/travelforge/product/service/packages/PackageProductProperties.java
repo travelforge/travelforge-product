@@ -36,6 +36,8 @@ import java.util.List;
 @Data
 public class PackageProductProperties implements ProductProperties, FlightProperties, HotelProperties, Serializable {
 
+    private String hotelChain;
+    private String hotelName;
     private List<Integer> productGroups;
     private List<String> tourOperatorCodes;
     private Integer travellersAdults;
@@ -77,8 +79,11 @@ public class PackageProductProperties implements ProductProperties, FlightProper
     private String hotelLocation;
     private List<String> hotelLocationCountryCodes;
     private List<Integer> hotelLocationRegionCodes;
+    private String hotelLocationRegionName;
     private List<Integer> hotelLocationCityCodes;
+    private String hotelLocationCityName;
     private List<String> hotelAttributes;
+    private List<String> hotelGlobalTypes;
     private Integer hotelRatingCount;
     private Float hotelRatingOverAll;
     private Float hotelRatingTotal;
