@@ -30,6 +30,8 @@ public class HotelProduct implements Product, HotelComponent, Serializable {
     private static final long serialVersionUID = 1L;
 
     private String provider;
+    private String travelType;
+    private String programType;
     private TourOperator tourOperator;
     private Travellers travellers;
     private TravelPeriod travelPeriod;
@@ -41,6 +43,20 @@ public class HotelProduct implements Product, HotelComponent, Serializable {
 
     public HotelProduct() {
 
+    }
+
+    public HotelProduct(String provider, String travelType, String programType, TourOperator tourOperator, Travellers travellers, TravelPeriod travelPeriod, Hotel hotel, List<Extra> extras, Price price, Map<String, Object> properties, Map<String, Object> references) {
+        this.provider = provider;
+        this.travelType = travelType;
+        this.programType = programType;
+        this.tourOperator = tourOperator;
+        this.travellers = travellers;
+        this.travelPeriod = travelPeriod;
+        this.hotel = hotel;
+        this.extras = extras;
+        this.price = price;
+        this.properties = properties;
+        this.references = references;
     }
 
     public HotelProduct(String provider, TourOperator tourOperator, Travellers travellers, TravelPeriod travelPeriod, Hotel hotel, List<Extra> extras, Price price, Map<String, Object> properties, Map<String, Object> references) {
@@ -67,6 +83,26 @@ public class HotelProduct implements Product, HotelComponent, Serializable {
     @Override
     public void setProvider(String provider) {
         this.provider = provider;
+    }
+
+    @Override
+    public String getTravelType() {
+        return travelType;
+    }
+
+    @Override
+    public void setTravelType(String travelType) {
+        this.travelType = travelType;
+    }
+
+    @Override
+    public String getProgramType() {
+        return programType;
+    }
+
+    @Override
+    public void setProgramType(String programType) {
+        this.programType = programType;
     }
 
     public TourOperator getTourOperator() {
@@ -145,6 +181,8 @@ public class HotelProduct implements Product, HotelComponent, Serializable {
         HotelProduct that = (HotelProduct) o;
 
         if (provider != null ? !provider.equals(that.provider) : that.provider != null) return false;
+        if (travelType != null ? !travelType.equals(that.travelType) : that.travelType != null) return false;
+        if (programType != null ? !programType.equals(that.programType) : that.programType != null) return false;
         if (tourOperator != null ? !tourOperator.equals(that.tourOperator) : that.tourOperator != null) return false;
         if (travellers != null ? !travellers.equals(that.travellers) : that.travellers != null) return false;
         if (travelPeriod != null ? !travelPeriod.equals(that.travelPeriod) : that.travelPeriod != null) return false;
@@ -158,6 +196,8 @@ public class HotelProduct implements Product, HotelComponent, Serializable {
     @Override
     public int hashCode() {
         int result = provider != null ? provider.hashCode() : 0;
+        result = 31 * result + (travelType != null ? travelType.hashCode() : 0);
+        result = 31 * result + (programType != null ? programType.hashCode() : 0);
         result = 31 * result + (tourOperator != null ? tourOperator.hashCode() : 0);
         result = 31 * result + (travellers != null ? travellers.hashCode() : 0);
         result = 31 * result + (travelPeriod != null ? travelPeriod.hashCode() : 0);
@@ -173,6 +213,8 @@ public class HotelProduct implements Product, HotelComponent, Serializable {
     public String toString() {
         return "HotelProduct{" +
                 "provider='" + provider + '\'' +
+                ", travelType='" + travelType + '\'' +
+                ", programType='" + programType + '\'' +
                 ", tourOperator=" + tourOperator +
                 ", travellers=" + travellers +
                 ", travelPeriod=" + travelPeriod +
@@ -187,6 +229,8 @@ public class HotelProduct implements Product, HotelComponent, Serializable {
     public static class Builder<T_BUILDER extends Builder, T_HOTEL_PRODUCT extends HotelProduct> {
 
         protected String provider;
+        protected String travelType;
+        protected String programType;
         protected TourOperator tourOperator;
         protected Travellers travellers;
         protected TravelPeriod travelPeriod;
@@ -202,6 +246,18 @@ public class HotelProduct implements Product, HotelComponent, Serializable {
         @SuppressWarnings("unchecked")
         public T_BUILDER provider(String provider) {
             this.provider = provider;
+            return (T_BUILDER) this;
+        }
+
+        @SuppressWarnings("unchecked")
+        public T_BUILDER travelType(String travelType) {
+            this.travelType = travelType;
+            return (T_BUILDER) this;
+        }
+
+        @SuppressWarnings("unchecked")
+        public T_BUILDER programType(String programType) {
+            this.programType = programType;
             return (T_BUILDER) this;
         }
 
@@ -258,7 +314,7 @@ public class HotelProduct implements Product, HotelComponent, Serializable {
 
         @SuppressWarnings("unchecked")
         public T_HOTEL_PRODUCT build() {
-            return (T_HOTEL_PRODUCT) new HotelProduct(provider, tourOperator, travellers, travelPeriod, hotel, extras, price, properties, references);
+            return (T_HOTEL_PRODUCT) new HotelProduct(provider, travelType, programType, tourOperator, travellers, travelPeriod, hotel, extras, price, properties, references);
         }
     }
 }

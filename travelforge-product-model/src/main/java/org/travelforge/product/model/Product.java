@@ -26,6 +26,13 @@ public interface Product  {
 
     String getProvider();
     void setProvider(String provider);
+
+    String getTravelType();
+    void setTravelType(String travelType);
+
+    String getProgramType();
+    void setProgramType(String programType);
+
     Price getPrice();
     void setPrice(Price price);
 }
