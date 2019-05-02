@@ -36,6 +36,7 @@ import java.util.List;
 @Data
 public class PackageProductProperties implements ProductProperties, FlightProperties, HotelProperties, Serializable {
 
+    private List<String> hotelProviders;
     private String hotelChain;
     private String hotelName;
     private List<Integer> productGroups;

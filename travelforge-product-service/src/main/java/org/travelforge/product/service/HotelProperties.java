@@ -28,6 +28,10 @@ import java.util.List;
  */
 public interface HotelProperties extends Serializable {
 
+    List<String> getHotelProviders();
+
+    void setHotelProviders(List<String> hotelProviders);
+
     String getHotelChain();
 
     void setHotelChain(String hotelChain);
@@ -179,6 +183,11 @@ public interface HotelProperties extends Serializable {
     static void merge(HotelProperties target, HotelProperties... sources) {
 
         for (HotelProperties source : sources) {
+
+            // HOTEL_PROVIDERS
+            if (source.getHotelProviders() != null) {
+                target.setHotelProviders(new ArrayList<>(source.getHotelProviders()));
+            }
 
             // HOTEL_CHAIN
             if (source.getHotelChain() != null) {
