@@ -32,6 +32,10 @@ public class InboundFlight extends BoundedFlight {
     public InboundFlight() {
     }
 
+    public InboundFlight(String provider, Airline airline, String flightNumber, String flightClass, String flightId, String flightCode, String flightKey, String flightLabel, String bookingClass, String bookingCode, Airport departureAirport, LocalDateTime departureDateTime, Airport arrivalAirport, LocalDateTime arrivalDateTime, Integer stopOver, Integer offset, Integer duration, List<FlightSegment> segments) {
+        super(provider, airline, flightNumber, flightClass, flightId, flightCode, flightKey, flightLabel, bookingClass, bookingCode, departureAirport, departureDateTime, arrivalAirport, arrivalDateTime, stopOver, offset, duration, segments);
+    }
+
     public InboundFlight(String provider, Airline airline, String flightNumber, String flightClass, String flightId, String flightCode, String flightKey, String bookingClass, String bookingCode, Airport departureAirport, LocalDateTime departureDateTime, Airport arrivalAirport, LocalDateTime arrivalDateTime, Integer stopOver, Integer duration, List<FlightSegment> segments) {
         super(provider, airline, flightNumber, flightClass, flightId, flightCode, flightKey, bookingClass, bookingCode, departureAirport, departureDateTime, arrivalAirport, arrivalDateTime, stopOver, duration, segments);
     }
@@ -52,7 +56,7 @@ public class InboundFlight extends BoundedFlight {
 
         @Override
         public InboundFlight build() {
-            return new InboundFlight(provider, airline, flightNumber, flightClass, flightId, flightCode, flightKey, bookingClass, bookingCode, departureAirport, departureDateTime, arrivalAirport, arrivalDateTime, stopOver, offset, duration, segments);
+            return new InboundFlight(provider, airline, flightNumber, flightClass, flightId, flightCode, flightKey, flightLabel, bookingClass, bookingCode, departureAirport, departureDateTime, arrivalAirport, arrivalDateTime, stopOver, offset, duration, segments);
         }
     }
 }

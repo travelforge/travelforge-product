@@ -39,6 +39,7 @@ public abstract class BoundedFlight implements Serializable {
     private String flightId;
     private String flightCode;
     private String flightKey;
+    private String flightLabel;
     private String bookingClass;
     private String bookingCode;
     private Airport departureAirport;
@@ -51,6 +52,27 @@ public abstract class BoundedFlight implements Serializable {
     private List<FlightSegment> segments;
 
     public BoundedFlight() {
+    }
+
+    public BoundedFlight(String provider, Airline airline, String flightNumber, String flightClass, String flightId, String flightCode, String flightKey, String flightLabel, String bookingClass, String bookingCode, Airport departureAirport, LocalDateTime departureDateTime, Airport arrivalAirport, LocalDateTime arrivalDateTime, Integer stopOver, Integer offset, Integer duration, List<FlightSegment> segments) {
+        this.provider = provider;
+        this.airline = airline;
+        this.flightNumber = flightNumber;
+        this.flightClass = flightClass;
+        this.flightId = flightId;
+        this.flightCode = flightCode;
+        this.flightKey = flightKey;
+        this.flightLabel = flightLabel;
+        this.bookingClass = bookingClass;
+        this.bookingCode = bookingCode;
+        this.departureAirport = departureAirport;
+        this.departureDateTime = departureDateTime;
+        this.arrivalAirport = arrivalAirport;
+        this.arrivalDateTime = arrivalDateTime;
+        this.stopOver = stopOver;
+        this.offset = offset;
+        this.duration = duration;
+        this.segments = segments;
     }
 
     public BoundedFlight(String provider, Airline airline, String flightNumber, String flightClass, String flightId, String flightCode, String flightKey, String bookingClass, String bookingCode, Airport departureAirport, LocalDateTime departureDateTime, Airport arrivalAirport, LocalDateTime arrivalDateTime, Integer stopOver, Integer duration, List<FlightSegment> segments) {
@@ -149,6 +171,14 @@ public abstract class BoundedFlight implements Serializable {
         this.flightKey = flightKey;
     }
 
+    public String getFlightLabel() {
+        return flightLabel;
+    }
+
+    public void setFlightLabel(String flightLabel) {
+        this.flightLabel = flightLabel;
+    }
+
     public String getBookingClass() {
         return bookingClass;
     }
@@ -243,6 +273,7 @@ public abstract class BoundedFlight implements Serializable {
         if (flightId != null ? !flightId.equals(that.flightId) : that.flightId != null) return false;
         if (flightCode != null ? !flightCode.equals(that.flightCode) : that.flightCode != null) return false;
         if (flightKey != null ? !flightKey.equals(that.flightKey) : that.flightKey != null) return false;
+        if (flightLabel != null ? !flightLabel.equals(that.flightLabel) : that.flightLabel != null) return false;
         if (bookingClass != null ? !bookingClass.equals(that.bookingClass) : that.bookingClass != null) return false;
         if (bookingCode != null ? !bookingCode.equals(that.bookingCode) : that.bookingCode != null) return false;
         if (departureAirport != null ? !departureAirport.equals(that.departureAirport) : that.departureAirport != null)
@@ -268,6 +299,7 @@ public abstract class BoundedFlight implements Serializable {
         result = 31 * result + (flightId != null ? flightId.hashCode() : 0);
         result = 31 * result + (flightCode != null ? flightCode.hashCode() : 0);
         result = 31 * result + (flightKey != null ? flightKey.hashCode() : 0);
+        result = 31 * result + (flightLabel != null ? flightLabel.hashCode() : 0);
         result = 31 * result + (bookingClass != null ? bookingClass.hashCode() : 0);
         result = 31 * result + (bookingCode != null ? bookingCode.hashCode() : 0);
         result = 31 * result + (departureAirport != null ? departureAirport.hashCode() : 0);
@@ -291,6 +323,7 @@ public abstract class BoundedFlight implements Serializable {
                 ", flightId='" + flightId + '\'' +
                 ", flightCode='" + flightCode + '\'' +
                 ", flightKey='" + flightKey + '\'' +
+                ", flightLabel='" + flightLabel + '\'' +
                 ", bookingClass='" + bookingClass + '\'' +
                 ", bookingCode='" + bookingCode + '\'' +
                 ", departureAirport=" + departureAirport +
@@ -313,6 +346,7 @@ public abstract class BoundedFlight implements Serializable {
         protected String flightId;
         protected String flightCode;
         protected String flightKey;
+        protected String flightLabel;
         protected String bookingClass;
         protected String bookingCode;
         protected Airport departureAirport;
@@ -366,6 +400,12 @@ public abstract class BoundedFlight implements Serializable {
         @SuppressWarnings("unchecked")
         public T_BUILDER flightKey(String flightKey) {
             this.flightKey = flightKey;
+            return (T_BUILDER) this;
+        }
+
+        @SuppressWarnings("unchecked")
+        public T_BUILDER flightLabel(String flightLabel) {
+            this.flightLabel = flightLabel;
             return (T_BUILDER) this;
         }
 
