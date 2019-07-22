@@ -21,6 +21,7 @@ package org.travelforge.product.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * @author Matthias Deck
@@ -32,6 +33,7 @@ public class TravelPeriod implements Serializable {
     private LocalDate departureDate;
     private LocalDate returnDate;
     private Integer duration;
+    private LocalDate arrivalDate;
 
     public TravelPeriod() {
     }
@@ -40,6 +42,13 @@ public class TravelPeriod implements Serializable {
         this.departureDate = departureDate;
         this.returnDate = returnDate;
         this.duration = duration;
+    }
+
+    public TravelPeriod(LocalDate departureDate, LocalDate returnDate, Integer duration, LocalDate arrivalDate) {
+        this.departureDate = departureDate;
+        this.returnDate = returnDate;
+        this.duration = duration;
+        this.arrivalDate = arrivalDate;
     }
 
     public static Builder builder() {
@@ -70,25 +79,28 @@ public class TravelPeriod implements Serializable {
         this.duration = duration;
     }
 
+    public LocalDate getArrivalDate() {
+        return arrivalDate;
+    }
+
+    public void setArrivalDate(LocalDate arrivalDate) {
+        this.arrivalDate = arrivalDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         TravelPeriod that = (TravelPeriod) o;
-
-        if (departureDate != null ? !departureDate.equals(that.departureDate) : that.departureDate != null)
-            return false;
-        if (returnDate != null ? !returnDate.equals(that.returnDate) : that.returnDate != null) return false;
-        return duration != null ? duration.equals(that.duration) : that.duration == null;
+        return Objects.equals(departureDate, that.departureDate) &&
+                Objects.equals(returnDate, that.returnDate) &&
+                Objects.equals(duration, that.duration) &&
+                Objects.equals(arrivalDate, that.arrivalDate);
     }
 
     @Override
     public int hashCode() {
-        int result = departureDate != null ? departureDate.hashCode() : 0;
-        result = 31 * result + (returnDate != null ? returnDate.hashCode() : 0);
-        result = 31 * result + (duration != null ? duration.hashCode() : 0);
-        return result;
+        return Objects.hash(departureDate, returnDate, duration, arrivalDate);
     }
 
     @Override
@@ -97,6 +109,7 @@ public class TravelPeriod implements Serializable {
                 "departureDate=" + departureDate +
                 ", returnDate=" + returnDate +
                 ", duration=" + duration +
+                ", arrivalDate=" + arrivalDate +
                 '}';
     }
 
@@ -105,6 +118,7 @@ public class TravelPeriod implements Serializable {
         protected LocalDate departureDate;
         protected LocalDate returnDate;
         protected Integer duration;
+        private LocalDate arrivalDate;
 
         protected Builder() {
         }
@@ -128,8 +142,14 @@ public class TravelPeriod implements Serializable {
         }
 
         @SuppressWarnings("unchecked")
+        public T_BUILDER arrivalDate(LocalDate arrivalDate) {
+            this.arrivalDate = arrivalDate;
+            return (T_BUILDER) this;
+        }
+
+        @SuppressWarnings("unchecked")
         public T_TRAVEL_PERIOD build() {
-            return (T_TRAVEL_PERIOD) new TravelPeriod(departureDate, returnDate, duration);
+            return (T_TRAVEL_PERIOD) new TravelPeriod(departureDate, returnDate, duration, arrivalDate);
         }
     }
 }

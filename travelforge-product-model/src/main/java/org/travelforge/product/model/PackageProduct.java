@@ -38,6 +38,7 @@ public class PackageProduct implements Product, FlightComponent, HotelComponent,
     private Flight flight;
     private Hotel hotel;
     private List<Extra> extras;
+    private List<String> attributes;
     private Price price;
     private Map<String, Object> properties;
     private Map<String, Object> references;
@@ -69,6 +70,22 @@ public class PackageProduct implements Product, FlightComponent, HotelComponent,
         this.flight = flight;
         this.hotel = hotel;
         this.extras = extras;
+        this.price = price;
+        this.properties = properties;
+        this.references = references;
+    }
+
+    public PackageProduct(String provider, String travelType, String programType, TourOperator tourOperator, Travellers travellers, TravelPeriod travelPeriod, Flight flight, Hotel hotel, List<Extra> extras, List<String> attributes, Price price, Map<String, Object> properties, Map<String, Object> references) {
+        this.provider = provider;
+        this.travelType = travelType;
+        this.programType = programType;
+        this.tourOperator = tourOperator;
+        this.travellers = travellers;
+        this.travelPeriod = travelPeriod;
+        this.flight = flight;
+        this.hotel = hotel;
+        this.extras = extras;
+        this.attributes = attributes;
         this.price = price;
         this.properties = properties;
         this.references = references;
@@ -159,6 +176,14 @@ public class PackageProduct implements Product, FlightComponent, HotelComponent,
         this.extras = extras;
     }
 
+    public List<String> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(List<String> attributes) {
+        this.attributes = attributes;
+    }
+
     @Override
     public Price getPrice() {
         return price;
@@ -189,38 +214,25 @@ public class PackageProduct implements Product, FlightComponent, HotelComponent,
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         PackageProduct that = (PackageProduct) o;
-
-        if (provider != null ? !provider.equals(that.provider) : that.provider != null) return false;
-        if (travelType != null ? !travelType.equals(that.travelType) : that.travelType != null) return false;
-        if (programType != null ? !programType.equals(that.programType) : that.programType != null) return false;
-        if (tourOperator != null ? !tourOperator.equals(that.tourOperator) : that.tourOperator != null) return false;
-        if (travellers != null ? !travellers.equals(that.travellers) : that.travellers != null) return false;
-        if (travelPeriod != null ? !travelPeriod.equals(that.travelPeriod) : that.travelPeriod != null) return false;
-        if (flight != null ? !flight.equals(that.flight) : that.flight != null) return false;
-        if (hotel != null ? !hotel.equals(that.hotel) : that.hotel != null) return false;
-        if (extras != null ? !extras.equals(that.extras) : that.extras != null) return false;
-        if (price != null ? !price.equals(that.price) : that.price != null) return false;
-        if (properties != null ? !properties.equals(that.properties) : that.properties != null) return false;
-        return references != null ? references.equals(that.references) : that.references == null;
+        return Objects.equals(provider, that.provider) &&
+                Objects.equals(travelType, that.travelType) &&
+                Objects.equals(programType, that.programType) &&
+                Objects.equals(tourOperator, that.tourOperator) &&
+                Objects.equals(travellers, that.travellers) &&
+                Objects.equals(travelPeriod, that.travelPeriod) &&
+                Objects.equals(flight, that.flight) &&
+                Objects.equals(hotel, that.hotel) &&
+                Objects.equals(extras, that.extras) &&
+                Objects.equals(attributes, that.attributes) &&
+                Objects.equals(price, that.price) &&
+                Objects.equals(properties, that.properties) &&
+                Objects.equals(references, that.references);
     }
 
     @Override
     public int hashCode() {
-        int result = provider != null ? provider.hashCode() : 0;
-        result = 31 * result + (travelType != null ? travelType.hashCode() : 0);
-        result = 31 * result + (programType != null ? programType.hashCode() : 0);
-        result = 31 * result + (tourOperator != null ? tourOperator.hashCode() : 0);
-        result = 31 * result + (travellers != null ? travellers.hashCode() : 0);
-        result = 31 * result + (travelPeriod != null ? travelPeriod.hashCode() : 0);
-        result = 31 * result + (flight != null ? flight.hashCode() : 0);
-        result = 31 * result + (hotel != null ? hotel.hashCode() : 0);
-        result = 31 * result + (extras != null ? extras.hashCode() : 0);
-        result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + (properties != null ? properties.hashCode() : 0);
-        result = 31 * result + (references != null ? references.hashCode() : 0);
-        return result;
+        return Objects.hash(provider, travelType, programType, tourOperator, travellers, travelPeriod, flight, hotel, extras, attributes, price, properties, references);
     }
 
     @Override
@@ -235,6 +247,7 @@ public class PackageProduct implements Product, FlightComponent, HotelComponent,
                 ", flight=" + flight +
                 ", hotel=" + hotel +
                 ", extras=" + extras +
+                ", attributes=" + attributes +
                 ", price=" + price +
                 ", properties=" + properties +
                 ", references=" + references +
@@ -252,6 +265,7 @@ public class PackageProduct implements Product, FlightComponent, HotelComponent,
         protected Flight flight;
         protected Hotel hotel;
         protected List<Extra> extras;
+        private List<String> attributes;
         protected Price price;
         protected Map<String, Object> properties;
         protected Map<String, Object> references;
@@ -315,6 +329,13 @@ public class PackageProduct implements Product, FlightComponent, HotelComponent,
         }
 
         @SuppressWarnings("unchecked")
+        public T_BUILDER attributes(Collection<String> attributes) {
+            this.attributes = attributes != null
+                    ? new ArrayList<>(attributes) : null;
+            return (T_BUILDER) this;
+        }
+
+        @SuppressWarnings("unchecked")
         public T_BUILDER price(Price price) {
             this.price = price;
             return (T_BUILDER) this;
@@ -336,7 +357,7 @@ public class PackageProduct implements Product, FlightComponent, HotelComponent,
 
         @SuppressWarnings("unchecked")
         public T_PACKAGE_PRODUCT build() {
-            return (T_PACKAGE_PRODUCT) new PackageProduct(provider, travelType, programType, tourOperator, travellers, travelPeriod, flight, hotel, extras, price, properties, references);
+            return (T_PACKAGE_PRODUCT) new PackageProduct(provider, travelType, programType, tourOperator, travellers, travelPeriod, flight, hotel, extras, attributes, price, properties, references);
         }
     }
 }
