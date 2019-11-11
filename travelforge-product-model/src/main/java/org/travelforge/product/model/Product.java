@@ -24,6 +24,9 @@ package org.travelforge.product.model;
  */
 public interface Product  {
 
+    String getId();
+    void setId(String id);
+
     String getProvider();
     void setProvider(String provider);
 

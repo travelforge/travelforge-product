@@ -29,6 +29,7 @@ public class HotelProduct implements Product, HotelComponent, Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    private String id;
     private String provider;
     private String travelType;
     private String programType;
@@ -71,8 +72,33 @@ public class HotelProduct implements Product, HotelComponent, Serializable {
         this.references = references;
     }
 
+    public HotelProduct(String id, String provider, String travelType, String programType, TourOperator tourOperator, Travellers travellers, TravelPeriod travelPeriod, Hotel hotel, List<Extra> extras, Price price, Map<String, Object> properties, Map<String, Object> references) {
+        this.id = id;
+        this.provider = provider;
+        this.travelType = travelType;
+        this.programType = programType;
+        this.tourOperator = tourOperator;
+        this.travellers = travellers;
+        this.travelPeriod = travelPeriod;
+        this.hotel = hotel;
+        this.extras = extras;
+        this.price = price;
+        this.properties = properties;
+        this.references = references;
+    }
+
     public static Builder builder() {
         return new Builder<>();
+    }
+
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override
@@ -177,42 +203,31 @@ public class HotelProduct implements Product, HotelComponent, Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         HotelProduct that = (HotelProduct) o;
-
-        if (provider != null ? !provider.equals(that.provider) : that.provider != null) return false;
-        if (travelType != null ? !travelType.equals(that.travelType) : that.travelType != null) return false;
-        if (programType != null ? !programType.equals(that.programType) : that.programType != null) return false;
-        if (tourOperator != null ? !tourOperator.equals(that.tourOperator) : that.tourOperator != null) return false;
-        if (travellers != null ? !travellers.equals(that.travellers) : that.travellers != null) return false;
-        if (travelPeriod != null ? !travelPeriod.equals(that.travelPeriod) : that.travelPeriod != null) return false;
-        if (hotel != null ? !hotel.equals(that.hotel) : that.hotel != null) return false;
-        if (extras != null ? !extras.equals(that.extras) : that.extras != null) return false;
-        if (price != null ? !price.equals(that.price) : that.price != null) return false;
-        if (properties != null ? !properties.equals(that.properties) : that.properties != null) return false;
-        return references != null ? references.equals(that.references) : that.references == null;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(provider, that.provider) &&
+                Objects.equals(travelType, that.travelType) &&
+                Objects.equals(programType, that.programType) &&
+                Objects.equals(tourOperator, that.tourOperator) &&
+                Objects.equals(travellers, that.travellers) &&
+                Objects.equals(travelPeriod, that.travelPeriod) &&
+                Objects.equals(hotel, that.hotel) &&
+                Objects.equals(extras, that.extras) &&
+                Objects.equals(price, that.price) &&
+                Objects.equals(properties, that.properties) &&
+                Objects.equals(references, that.references);
     }
 
     @Override
     public int hashCode() {
-        int result = provider != null ? provider.hashCode() : 0;
-        result = 31 * result + (travelType != null ? travelType.hashCode() : 0);
-        result = 31 * result + (programType != null ? programType.hashCode() : 0);
-        result = 31 * result + (tourOperator != null ? tourOperator.hashCode() : 0);
-        result = 31 * result + (travellers != null ? travellers.hashCode() : 0);
-        result = 31 * result + (travelPeriod != null ? travelPeriod.hashCode() : 0);
-        result = 31 * result + (hotel != null ? hotel.hashCode() : 0);
-        result = 31 * result + (extras != null ? extras.hashCode() : 0);
-        result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + (properties != null ? properties.hashCode() : 0);
-        result = 31 * result + (references != null ? references.hashCode() : 0);
-        return result;
+        return Objects.hash(id, provider, travelType, programType, tourOperator, travellers, travelPeriod, hotel, extras, price, properties, references);
     }
 
     @Override
     public String toString() {
         return "HotelProduct{" +
-                "provider='" + provider + '\'' +
+                "id='" + id + '\'' +
+                ", provider='" + provider + '\'' +
                 ", travelType='" + travelType + '\'' +
                 ", programType='" + programType + '\'' +
                 ", tourOperator=" + tourOperator +
@@ -228,6 +243,7 @@ public class HotelProduct implements Product, HotelComponent, Serializable {
 
     public static class Builder<T_BUILDER extends Builder, T_HOTEL_PRODUCT extends HotelProduct> {
 
+        protected String id;
         protected String provider;
         protected String travelType;
         protected String programType;
@@ -241,6 +257,12 @@ public class HotelProduct implements Product, HotelComponent, Serializable {
         protected Map<String, Object> references;
 
         protected Builder() {
+        }
+
+        @SuppressWarnings("unchecked")
+        public T_BUILDER id(String id) {
+            this.id = id;
+            return (T_BUILDER) this;
         }
 
         @SuppressWarnings("unchecked")
@@ -314,7 +336,7 @@ public class HotelProduct implements Product, HotelComponent, Serializable {
 
         @SuppressWarnings("unchecked")
         public T_HOTEL_PRODUCT build() {
-            return (T_HOTEL_PRODUCT) new HotelProduct(provider, travelType, programType, tourOperator, travellers, travelPeriod, hotel, extras, price, properties, references);
+            return (T_HOTEL_PRODUCT) new HotelProduct(id, provider, travelType, programType, tourOperator, travellers, travelPeriod, hotel, extras, price, properties, references);
         }
     }
 }

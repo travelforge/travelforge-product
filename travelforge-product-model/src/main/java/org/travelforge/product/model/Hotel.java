@@ -30,6 +30,7 @@ public class Hotel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String provider;
+    private Integer id;
     private Integer code;
     private String productCode;
     private String name;
@@ -71,6 +72,21 @@ public class Hotel implements Serializable {
         this.board = board;
     }
 
+    public Hotel(String provider, Integer id, Integer code, String productCode, String name, Float category, Location location, List<HotelAttribute> attributes, List<HotelQualifier> qualifiers, Map<String, Number> recommendations, HotelRoom room, HotelBoard board) {
+        this.provider = provider;
+        this.id = id;
+        this.code = code;
+        this.productCode = productCode;
+        this.name = name;
+        this.category = category;
+        this.location = location;
+        this.attributes = attributes;
+        this.qualifiers = qualifiers;
+        this.recommendations = recommendations;
+        this.room = room;
+        this.board = board;
+    }
+
     public static Builder builder() {
         return new Builder<>();
     }
@@ -81,6 +97,14 @@ public class Hotel implements Serializable {
 
     public void setProvider(String provider) {
         this.provider = provider;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getCode() {
@@ -167,43 +191,31 @@ public class Hotel implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Hotel hotel = (Hotel) o;
-
-        if (provider != null ? !provider.equals(hotel.provider) : hotel.provider != null) return false;
-        if (code != null ? !code.equals(hotel.code) : hotel.code != null) return false;
-        if (productCode != null ? !productCode.equals(hotel.productCode) : hotel.productCode != null) return false;
-        if (name != null ? !name.equals(hotel.name) : hotel.name != null) return false;
-        if (category != null ? !category.equals(hotel.category) : hotel.category != null) return false;
-        if (location != null ? !location.equals(hotel.location) : hotel.location != null) return false;
-        if (attributes != null ? !attributes.equals(hotel.attributes) : hotel.attributes != null) return false;
-        if (qualifiers != null ? !qualifiers.equals(hotel.qualifiers) : hotel.qualifiers != null) return false;
-        if (recommendations != null ? !recommendations.equals(hotel.recommendations) : hotel.recommendations != null)
-            return false;
-        if (room != null ? !room.equals(hotel.room) : hotel.room != null) return false;
-        return board != null ? board.equals(hotel.board) : hotel.board == null;
+        return Objects.equals(provider, hotel.provider) &&
+                Objects.equals(id, hotel.id) &&
+                Objects.equals(code, hotel.code) &&
+                Objects.equals(productCode, hotel.productCode) &&
+                Objects.equals(name, hotel.name) &&
+                Objects.equals(category, hotel.category) &&
+                Objects.equals(location, hotel.location) &&
+                Objects.equals(attributes, hotel.attributes) &&
+                Objects.equals(qualifiers, hotel.qualifiers) &&
+                Objects.equals(recommendations, hotel.recommendations) &&
+                Objects.equals(room, hotel.room) &&
+                Objects.equals(board, hotel.board);
     }
 
     @Override
     public int hashCode() {
-        int result = provider != null ? provider.hashCode() : 0;
-        result = 31 * result + (code != null ? code.hashCode() : 0);
-        result = 31 * result + (productCode != null ? productCode.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (category != null ? category.hashCode() : 0);
-        result = 31 * result + (location != null ? location.hashCode() : 0);
-        result = 31 * result + (attributes != null ? attributes.hashCode() : 0);
-        result = 31 * result + (qualifiers != null ? qualifiers.hashCode() : 0);
-        result = 31 * result + (recommendations != null ? recommendations.hashCode() : 0);
-        result = 31 * result + (room != null ? room.hashCode() : 0);
-        result = 31 * result + (board != null ? board.hashCode() : 0);
-        return result;
+        return Objects.hash(provider, id, code, productCode, name, category, location, attributes, qualifiers, recommendations, room, board);
     }
 
     @Override
     public String toString() {
         return "Hotel{" +
                 "provider='" + provider + '\'' +
+                ", id=" + id +
                 ", code=" + code +
                 ", productCode='" + productCode + '\'' +
                 ", name='" + name + '\'' +
@@ -220,6 +232,7 @@ public class Hotel implements Serializable {
     public static class Builder<T_BUILDER extends Builder, T_HOTEL extends Hotel> {
 
         protected String provider;
+        protected Integer id;
         protected Integer code;
         protected String productCode;
         protected String name;
@@ -237,6 +250,13 @@ public class Hotel implements Serializable {
         @SuppressWarnings("unchecked")
         public T_BUILDER provider(String provider) {
             this.provider = provider;
+            return (T_BUILDER) this;
+        }
+
+
+        @SuppressWarnings("unchecked")
+        public T_BUILDER id(Integer id) {
+            this.id = id;
             return (T_BUILDER) this;
         }
 
@@ -305,7 +325,7 @@ public class Hotel implements Serializable {
 
         @SuppressWarnings("unchecked")
         public T_HOTEL build() {
-            return (T_HOTEL) new Hotel(provider, code, productCode, name, category, location, attributes, qualifiers, recommendations, room, board);
+            return (T_HOTEL) new Hotel(provider, id, code, productCode, name, category, location, attributes, qualifiers, recommendations, room, board);
         }
     }
 }

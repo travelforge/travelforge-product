@@ -29,6 +29,7 @@ public class PackageProduct implements Product, FlightComponent, HotelComponent,
 
     private static final long serialVersionUID = 1L;
 
+    private String id;
     private String provider;
     private String travelType;
     private String programType;
@@ -91,8 +92,35 @@ public class PackageProduct implements Product, FlightComponent, HotelComponent,
         this.references = references;
     }
 
+    public PackageProduct(String id, String provider, String travelType, String programType, TourOperator tourOperator, Travellers travellers, TravelPeriod travelPeriod, Flight flight, Hotel hotel, List<Extra> extras, List<String> attributes, Price price, Map<String, Object> properties, Map<String, Object> references) {
+        this.id = id;
+        this.provider = provider;
+        this.travelType = travelType;
+        this.programType = programType;
+        this.tourOperator = tourOperator;
+        this.travellers = travellers;
+        this.travelPeriod = travelPeriod;
+        this.flight = flight;
+        this.hotel = hotel;
+        this.extras = extras;
+        this.attributes = attributes;
+        this.price = price;
+        this.properties = properties;
+        this.references = references;
+    }
+
     public static Builder builder() {
         return new Builder<>();
+    }
+
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override
@@ -215,7 +243,8 @@ public class PackageProduct implements Product, FlightComponent, HotelComponent,
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PackageProduct that = (PackageProduct) o;
-        return Objects.equals(provider, that.provider) &&
+        return Objects.equals(id, that.id) &&
+                Objects.equals(provider, that.provider) &&
                 Objects.equals(travelType, that.travelType) &&
                 Objects.equals(programType, that.programType) &&
                 Objects.equals(tourOperator, that.tourOperator) &&
@@ -232,13 +261,14 @@ public class PackageProduct implements Product, FlightComponent, HotelComponent,
 
     @Override
     public int hashCode() {
-        return Objects.hash(provider, travelType, programType, tourOperator, travellers, travelPeriod, flight, hotel, extras, attributes, price, properties, references);
+        return Objects.hash(id, provider, travelType, programType, tourOperator, travellers, travelPeriod, flight, hotel, extras, attributes, price, properties, references);
     }
 
     @Override
     public String toString() {
         return "PackageProduct{" +
-                "provider='" + provider + '\'' +
+                "id='" + id + '\'' +
+                ", provider='" + provider + '\'' +
                 ", travelType='" + travelType + '\'' +
                 ", programType='" + programType + '\'' +
                 ", tourOperator=" + tourOperator +
@@ -256,6 +286,7 @@ public class PackageProduct implements Product, FlightComponent, HotelComponent,
 
     public static class Builder<T_BUILDER extends Builder, T_PACKAGE_PRODUCT extends PackageProduct> {
 
+        protected String id;
         protected String provider;
         protected String travelType;
         protected String programType;
@@ -271,6 +302,12 @@ public class PackageProduct implements Product, FlightComponent, HotelComponent,
         protected Map<String, Object> references;
 
         protected Builder() {
+        }
+
+        @SuppressWarnings("unchecked")
+        public T_BUILDER id(String id) {
+            this.id = id;
+            return (T_BUILDER) this;
         }
 
         @SuppressWarnings("unchecked")
@@ -357,7 +394,7 @@ public class PackageProduct implements Product, FlightComponent, HotelComponent,
 
         @SuppressWarnings("unchecked")
         public T_PACKAGE_PRODUCT build() {
-            return (T_PACKAGE_PRODUCT) new PackageProduct(provider, travelType, programType, tourOperator, travellers, travelPeriod, flight, hotel, extras, attributes, price, properties, references);
+            return (T_PACKAGE_PRODUCT) new PackageProduct(id, provider, travelType, programType, tourOperator, travellers, travelPeriod, flight, hotel, extras, attributes, price, properties, references);
         }
     }
 }
