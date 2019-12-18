@@ -91,6 +91,7 @@ public class HotelProductProperties implements ProductProperties, HotelPropertie
     private Float hotelRecommendationsBusinessTrip;
     private Float hotelRecommendationsCityBreak;
     private Float hotelRecommendationsWellness;
+    private List<String> hotelRatings;
     private List<String> hotelQualifiers;
     private List<String> hotelRoomCodes;
     private List<String> hotelRoomBookingCodes;
