@@ -76,6 +76,10 @@ public interface HotelProperties extends Serializable {
 
     void setHotelLocationCityName(String hotelLocationCityName);
 
+    List<String> getHotelLocationNearestAirportCodes();
+
+    void setHotelLocationNearestAirportCodes(List<String> hotelLocationNearestAirportCodes);
+
     List<String> getHotelAttributes();
 
     void setHotelAttributes(List<String> hotelAttributes);
@@ -236,6 +240,10 @@ public interface HotelProperties extends Serializable {
             // HOTEL_LOCATION_CITY_NAME
             if (source.getHotelLocationCityName() != null) {
                 target.setHotelLocationCityName(source.getHotelLocationCityName());
+            }
+            // HOTEL_LOCATION_NEAREST_AIRPORT_CODES
+            if (source.getHotelLocationNearestAirportCodes() != null) {
+                target.setHotelLocationNearestAirportCodes(new ArrayList<>(source.getHotelLocationNearestAirportCodes()));
             }
             // HOTEL_ATTRIBUTES
             if (source.getHotelAttributes() != null) {
